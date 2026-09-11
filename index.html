@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kunal Mahurkar | AI Product Management Portfolio</title>
+  <meta name="description" content="Kunal Mahurkar - Enterprise software consultant transitioning into AI Product Management. Portfolio of AI automation, enterprise product thinking, integrations, and product-led problem solving." />
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0d1b2d;
+      --panel-2: #10243b;
+      --text: #f4f7fb;
+      --muted: #adc0d6;
+      --accent: #61dafb;
+      --accent-2: #7cf2c7;
+      --line: rgba(255,255,255,.1);
+      --shadow: 0 18px 55px rgba(0,0,0,.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(97,218,251,.13), transparent 32%),
+        radial-gradient(circle at 88% 12%, rgba(124,242,199,.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92vw); margin: 0 auto; }
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(7,17,31,.78);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; min-height:70px; gap:20px; }
+    .brand { font-weight: 800; letter-spacing:.2px; }
+    .brand span { color: var(--accent); }
+    .nav-links { display:flex; gap:22px; flex-wrap:wrap; font-size:14px; color:var(--muted); }
+    .nav-links a:hover { color:var(--text); }
+    .hero { padding: 84px 0 56px; }
+    .hero-grid { display:grid; grid-template-columns: 1.2fr .8fr; gap:44px; align-items:center; }
+    .eyebrow { display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border:1px solid var(--line); border-radius:999px; color:var(--accent-2); font-size:13px; background:rgba(255,255,255,.025); }
+    h1 { font-size: clamp(42px, 7vw, 76px); line-height:1.02; margin:18px 0 20px; letter-spacing:-2.5px; }
+    .hero p { font-size:18px; color:var(--muted); max-width:760px; }
+    .hero strong { color:var(--text); }
+    .cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border-radius:12px; font-weight:700; border:1px solid var(--line); }
+    .btn.primary { background:var(--accent); color:#02111b; border-color:transparent; }
+    .btn.secondary { background:rgba(255,255,255,.035); }
+    .profile-card { background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025)); border:1px solid var(--line); border-radius:24px; padding:26px; box-shadow:var(--shadow); }
+    .profile-card h3 { margin-top:0; }
+    .stats { display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; margin-top:20px; }
+    .stat { padding:18px; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.025); }
+    .stat b { display:block; font-size:24px; color:var(--accent); }
+    section { padding:64px 0; }
+    .section-head { display:flex; justify-content:space-between; gap:20px; align-items:end; margin-bottom:28px; }
+    .section-head h2 { font-size:34px; margin:0; letter-spacing:-1px; }
+    .section-head p { color:var(--muted); max-width:640px; margin:0; }
+    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card { border:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02)); border-radius:20px; padding:22px; }
+    .card h3 { margin:0 0 10px; }
+    .card p { color:var(--muted); margin:0; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .tag { font-size:12px; padding:6px 9px; border-radius:999px; border:1px solid var(--line); color:#d5e7f6; }
+    .timeline { display:grid; gap:18px; }
+    .timeline-item { display:grid; grid-template-columns:150px 1fr; gap:20px; padding:22px; border:1px solid var(--line); border-radius:18px; background:rgba(255,255,255,.025); }
+    .timeline-item .date { color:var(--accent-2); font-weight:700; }
+    .timeline-item h3 { margin:0 0 6px; }
+    .timeline-item p { margin:0; color:var(--muted); }
+    .case { display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+    .case .card { min-height:250px; }
+    .case-label { color:var(--accent-2); text-transform:uppercase; letter-spacing:.14em; font-size:11px; font-weight:800; }
+    .metric { margin-top:18px; padding-top:16px; border-top:1px solid var(--line); color:var(--text) !important; }
+    .skills { display:flex; flex-wrap:wrap; gap:10px; }
+    .skills span { padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.025); color:#dbe8f5; }
+    .contact { text-align:center; padding-bottom:86px; }
+    .contact-box { padding:38px; border:1px solid var(--line); border-radius:24px; background:linear-gradient(180deg, rgba(97,218,251,.08), rgba(255,255,255,.025)); }
+    footer { border-top:1px solid var(--line); color:var(--muted); padding:24px 0 38px; font-size:13px; }
+    @media (max-width: 850px) {
+      .hero-grid, .grid-3, .case { grid-template-columns:1fr; }
+      .timeline-item { grid-template-columns:1fr; gap:5px; }
+      .nav-links { display:none; }
+      .hero { padding-top:55px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <div class="brand">Kunal <span>Mahurkar</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">AI Product Management • Enterprise Software • Automation</div>
+          <h1>I turn complex enterprise problems into usable products and AI-powered workflows.</h1>
+          <p>
+            I’m <strong>Kunal Mahurkar</strong>, a Services Software Consultant with 9+ years of experience across enterprise software, customer delivery, APIs, integrations, automation and cross-functional execution. I’m now deepening that experience through <strong>AI First Product Management</strong> at Airtribe.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">View Product Work</a>
+            <a class="btn secondary" href="#contact">Connect</a>
+          </div>
+        </div>
+        <div class="profile-card">
+          <h3>What I bring</h3>
+          <p style="color:var(--muted)">A product-minded bridge between customers, delivery, engineering and AI-enabled automation.</p>
+          <div class="stats">
+            <div class="stat"><b>9+ yrs</b><span>Enterprise software experience</span></div>
+            <div class="stat"><b>5 envs</b><span>Major platform upgrade delivery</span></div>
+            <div class="stat"><b>AI + ERP</b><span>Practical automation focus</span></div>
+            <div class="stat"><b>PM path</b><span>Airtribe AI First PM</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Selected Product & AI Work</h2></div>
+          <p>Projects are described at a high level to respect employer and customer confidentiality.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <div class="case-label">AI Automation</div>
+            <h3>Quote Creation Workflow</h3>
+            <p>Designed an n8n-based concept that converts incoming request data into structured ERP quote creation, reducing repetitive manual work and improving process consistency.</p>
+            <div class="tag-row"><span class="tag">n8n</span><span class="tag">Workflow Design</span><span class="tag">ERP</span></div>
+          </article>
+          <article class="card">
+            <div class="case-label">Developer Experience</div>
+            <h3>AI-Assisted API Documentation</h3>
+            <p>Built tooling to transform API/Postman information into structured OpenAPI/Swagger documentation, improving discoverability and integration enablement.</p>
+            <div class="tag-row"><span class="tag">OpenAPI</span><span class="tag">Swagger</span><span class="tag">AI Assistance</span></div>
+          </article>
+          <article class="card">
+            <div class="case-label">Enterprise AI</div>
+            <h3>Private RAG & LLM Experiments</h3>
+            <p>Explored local LLM and embedding workflows using Ollama and open models to understand privacy-friendly enterprise knowledge and support use cases.</p>
+            <div class="tag-row"><span class="tag">RAG</span><span class="tag">Ollama</span><span class="tag">LLMs</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Case Studies</h2></div>
+          <p>Examples of how I approach user needs, execution and product outcomes.</p>
+        </div>
+        <div class="case">
+          <article class="card">
+            <div class="case-label">Case Study 01</div>
+            <h3>Warehouse Scanner Experience</h3>
+            <p><strong>Problem:</strong> Warehouse users needed a reliable handheld workflow with minimal friction and support for multiple scan modes.</p>
+            <p><strong>Approach:</strong> Helped shape a Vue/Node scanner application, supported deployment to industrial devices, gathered usability feedback and fed responsive-design improvements back into the solution.</p>
+            <p class="metric"><strong>Product lens:</strong> usability, speed, frontline feedback, operational reliability.</p>
+          </article>
+          <article class="card">
+            <div class="case-label">Case Study 02</div>
+            <h3>Enterprise Upgrade Ownership</h3>
+            <p><strong>Problem:</strong> A large platform upgrade required alignment across customer teams, developers and R&D, including disaster-recovery validation.</p>
+            <p><strong>Approach:</strong> Coordinated milestones, technical dependencies, testing and stakeholder communication across five environments in a 13-week delivery window.</p>
+            <p class="metric"><strong>Product lens:</strong> risk reduction, stakeholder alignment, execution clarity, release readiness.</p>
+          </article>
+          <article class="card">
+            <div class="case-label">Case Study 03</div>
+            <h3>Operations AI Concept</h3>
+            <p><strong>Problem:</strong> Operations teams needed better visibility into incidents, workload and historical problem-solving context.</p>
+            <p><strong>Approach:</strong> Defined a role-based manager/worker concept combining operational data with AI suggestions and historical knowledge to improve triage and reporting.</p>
+            <p class="metric"><strong>Product lens:</strong> role-based UX, decision support, data integration, AI augmentation.</p>
+          </article>
+          <article class="card">
+            <div class="case-label">Case Study 04</div>
+            <h3>Integration & E-Invoicing POCs</h3>
+            <p><strong>Problem:</strong> Customers needed smoother data movement across ERP, accounting, middleware and regulatory systems.</p>
+            <p><strong>Approach:</strong> Mapped current workflows, identified field/data gaps, supported POCs and helped shape integration patterns without over-customizing core systems.</p>
+            <p class="metric"><strong>Product lens:</strong> interoperability, process mapping, reuse, maintainability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Experience</h2></div>
+          <p>Enterprise delivery experience now being translated into a stronger product management toolkit.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="date">2017–Present</div>
+            <div>
+              <h3>Dassault Systèmes Global Services — Services Software Consultant</h3>
+              <p>Progressed through engineering and consulting roles, delivering customer-facing enterprise solutions across 3DEXPERIENCE and DELMIAWorks, with work spanning upgrades, APIs, integrations, automation, testing, deployment and stakeholder coordination.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="date">2026–Present</div>
+            <div>
+              <h3>Airtribe — AI First Product Management</h3>
+              <p>Building structured capability in product discovery, prioritization, AI product strategy, experimentation, metrics, product communication and AI-native problem solving.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Skills</h2></div>
+          <p>A mix of product, enterprise technology and AI implementation skills.</p>
+        </div>
+        <div class="skills">
+          <span>Product Discovery</span><span>Problem Framing</span><span>Customer Requirements</span><span>User Stories</span><span>Prioritization</span><span>Stakeholder Management</span><span>UAT & Go-Live</span><span>Enterprise SaaS</span><span>ERP / MES</span><span>AI Workflow Automation</span><span>LLM / RAG</span><span>AI Agents & MCP Concepts</span><span>n8n</span><span>REST APIs</span><span>GraphQL</span><span>OpenAPI / Swagger</span><span>SQL</span><span>Vue.js</span><span>Node.js</span><span>.NET</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Education & Recognition</h2></div>
+        </div>
+        <div class="grid-3">
+          <div class="card"><h3>M.E. Computer Engineering</h3><p>First Class with Distinction. Master’s work included machine learning research using K-Means and ANN.</p></div>
+          <div class="card"><h3>DELMIAWorks Learning</h3><p>Completed multiple functional and administration learning paths spanning manufacturing, system setup, shipping/receiving and advanced processes.</p></div>
+          <div class="card"><h3>Recognition</h3><p>Received internal recognition for delivery contributions, including APPLAUSE H2 2025 and a 3DS Excellence nomination.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Interested in AI products, enterprise SaaS or product-led transformation?</h2>
+          <p style="color:var(--muted); max-width:720px; margin:0 auto 20px">I’m exploring opportunities where customer understanding, technical depth and AI-first product thinking come together.</p>
+          <div class="cta-row" style="justify-content:center">
+            <a class="btn primary" href="www.linkedin.com/in/kunal-mahurkar-99988a211" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn secondary" href="mailto:kunal.mahurkar@yahoo.com">Email Me</a>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Kunal Mahurkar. Built as a personal AI Product Management portfolio.</div>
+  </footer>
+</body>
+</html>
