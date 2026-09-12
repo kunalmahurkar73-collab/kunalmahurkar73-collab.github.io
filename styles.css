@@ -163,3 +163,41 @@ body.aura-on .cursor-aura{opacity:.85}
     animation:none!important;transform:none!important;opacity:1!important;transition:none!important
   }
 }
+
+/* Final identity layer */
+.hero-bottom-profile{
+  grid-template-columns:180px minmax(0,1fr) minmax(280px,.8fr);
+  align-items:start;
+  gap:28px;
+}
+.hero-profile{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.portrait-ring{
+  width:154px;height:154px;border-radius:50%;padding:6px;
+  background:conic-gradient(from 45deg,var(--a),var(--a2),var(--a),var(--a2),var(--a));
+  box-shadow:0 18px 50px rgba(17,17,15,.16);
+  position:relative;
+}
+.portrait-ring:after{
+  content:"";position:absolute;inset:-10px;border-radius:50%;
+  border:1px solid color-mix(in srgb,var(--a2) 26%,transparent);
+  animation:portraitOrbit 8s linear infinite;
+}
+.portrait-ring img{
+  width:100%;height:100%;display:block;object-fit:cover;border-radius:50%;
+  background:#111;
+}
+.profile-caption{display:grid;gap:2px}.profile-caption strong{font-size:13px}.profile-caption span{font-size:11px;color:var(--m);line-height:1.35}
+.role-link-note{margin:-10px 0 18px;color:var(--m);font-size:13px}.role-link-note code{font-size:11px;border:1px solid var(--line);background:var(--s);padding:3px 5px;border-radius:7px}
+@keyframes portraitOrbit{to{transform:rotate(360deg)}}
+@media(max-width:900px){
+  .hero-bottom-profile{grid-template-columns:150px 1fr;grid-template-areas:"profile copy" "actions actions"}
+  .hero-profile{grid-area:profile}.hero-bottom-profile>.hero-copy{grid-area:copy}.hero-bottom-profile>.actions{grid-area:actions}
+}
+@media(max-width:600px){
+  .hero-bottom-profile{grid-template-columns:1fr;grid-template-areas:"profile" "copy" "actions";gap:20px}
+  .hero-profile{flex-direction:row;align-items:center}
+  .portrait-ring{width:108px;height:108px;flex:0 0 108px}
+  .profile-caption strong{font-size:14px}.profile-caption span{font-size:11px}
+  .role-link-note{display:none}
+}
+@media(prefers-reduced-motion:reduce){.portrait-ring:after{animation:none!important}}

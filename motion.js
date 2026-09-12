@@ -152,4 +152,20 @@
       panel.classList.add("motion-swap");
     });
   });
+
+  // Role-specific deep links
+  const roleParam = new URLSearchParams(window.location.search).get("role");
+  const roleMap = {
+    "ai-product":"ai",
+    "technical-product":"technical",
+    "product-ops":"ops",
+    "customer-product":"customer"
+  };
+  if (roleParam && roleMap[roleParam]) {
+    const target = document.querySelector(`.role-tab[data-role="${roleMap[roleParam]}"], .role-tab[data-r="${roleMap[roleParam]}"], .role-tab[data-key="${roleMap[roleParam]}"]`);
+    if (target) {
+      window.setTimeout(() => target.click(), 100);
+    }
+  }
+
 })();
