@@ -4,6 +4,30 @@
 <section class="section"><div class="wrap grid"><div class="label">01 — The problem</div><div><h2>What had to change?</h2><p class="big">Large enterprise APIs are expensive to understand when knowledge is fragmented or documentation must be created manually. That slows consultants and developers before they can even start solving the customer's integration problem.</p></div></div></section>
 <section class="section"><div class="wrap grid"><div class="label">02 — My role</div><div><h2>Where I contributed.</h2><p class="big">I explored and built an AI-assisted documentation workflow that transforms existing API/Postman information into more structured OpenAPI/Swagger artifacts. My role was to connect the integration problem, transformation logic and AI assistance into a practical tool rather than a generic chatbot.</p></div></div></section>
 <section class="section"><div class="wrap grid"><div class="label">03 — Approach</div><div><h2>Turn ambiguity into decisions.</h2><div class="cards"><div class="card"><h3>Start with an expensive task</h3><p>Focused AI on a repeatable documentation burden with a clear user and output.</p></div><div class="card"><h3>Structure before generation</h3><p>Used known API/Postman information as grounding rather than asking a model to invent interface details.</p></div><div class="card"><h3>Keep validation explicit</h3><p>AI can accelerate drafting, but technical correctness still needs deterministic checks and human review.</p></div><div class="card"><h3>Optimize for reuse</h3><p>Structured output makes the result useful beyond one conversation — for documentation, testing and onboarding.</p></div></div><div class="flow"><div>Ingest<small>Known API information</small></div><div>Transform<small>Structured representation</small></div><div>Assist<small>AI-supported drafting</small></div><div>Validate<small>OpenAPI + human review</small></div></div></div></div></section>
+<section class="section"><div class="wrap grid"><div class="label">03.5 — AI architecture</div><div>
+<h2>AI is one component, not the whole product.</h2><p class="big">The workflow starts with trusted inputs and a required structured output. AI accelerates knowledge work while validation remains explicit.</p>
+<div class="visual-block"><div class="visual-title"><h3>Trust-aware pipeline</h3><span>simplified architecture</span></div><div class="pipeline">
+<div class="pipe-node"><b>Known input</b><small>API / Postman information</small></div><div class="pipe-arrow">→</div>
+<div class="pipe-node"><b>Structure</b><small>normalize fields &amp; context</small></div><div class="pipe-arrow">→</div>
+<div class="pipe-node ai"><b>AI assist</b><small>draft / transform knowledge</small></div><div class="pipe-arrow">→</div>
+<div class="pipe-node"><b>Validate</b><small>OpenAPI checks + human review</small></div></div>
+<div class="guardrail-grid"><div class="guardrail"><div class="kind">Deterministic</div><b>Known fields</b><p>Do not ask the model to invent data already available from trusted sources.</p></div><div class="guardrail"><div class="kind">AI-assisted</div><b>Knowledge compression</b><p>Use generation where interpretation and drafting consume human time.</p></div><div class="guardrail"><div class="kind">Human decision</div><b>Technical confidence</b><p>Keep review where incorrect documentation creates downstream risk.</p></div></div>
+<div class="artifact-window"><div class="artifact-bar">OpenAPI output • conceptual preview</div><div class="artifact-body"><div class="artifact-nav">/customers<br>/orders<br>/inventory<br>/shipping<br>/quotes</div><div class="artifact-code">openapi: 3.x
+paths:
+  /orders:
+    get:
+      summary: Retrieve orders
+      responses:
+        "200":
+          description: Validated response schema
+
+# Structured output becomes reusable
+# for docs, onboarding and testing.</div></div></div></div>
+</div></div></section>
 <section class="section outcome"><div class="wrap grid"><div class="label">04 — Outcome</div><div><p class="quote">The result demonstrates a practical AI product principle: <em>use AI to compress knowledge work, then surround it with structure and validation.</em></p></div></div></section>
+<section class="section"><div class="wrap grid"><div class="label">04.5 — Evaluation</div><div><h2>The questions I would use to judge the AI feature.</h2><div class="ownership">
+<div><h3>Quality</h3><ul><li>Is required API information complete?</li><li>Does the generated structure conform to OpenAPI expectations?</li><li>How often does human review find material corrections?</li></ul></div>
+<div><h3>Value</h3><ul><li>Does documentation take less manual effort?</li><li>Can consultants understand interfaces faster?</li><li>Is the output reusable beyond the original workflow?</li></ul></div>
+</div></div></div></section>
 <section class="section"><div class="wrap grid"><div class="label">05 — Product lens</div><div><h2>What I learned.</h2><p class="big">My biggest AI-product takeaway is to avoid starting with the model. Start with the costly user task, define the trusted inputs and required output, decide where uncertainty is acceptable, and only then choose where AI adds value.</p><div class="tags"><span class="tag">Problem framing</span><span class="tag">Trade-offs</span><span class="tag">Cross-functional execution</span><span class="tag">User value</span></div></div></div></section>
 <div class="wrap next"><a href="case-scanner.html">← Previous case</a><a href="case-upgrade.html">Next case →</a></div></body></html>
