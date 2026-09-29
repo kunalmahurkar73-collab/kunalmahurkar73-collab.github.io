@@ -1,6 +1,6 @@
 const styles = document.createElement('style');
 styles.textContent = `
-  .portrait{width:min(350px,100%);aspect-ratio:1;overflow:visible}.portrait img{width:100%;height:100%;object-fit:cover;object-position:center 28%}
+  .portrait{width:350px!important;height:350px!important;aspect-ratio:1/1!important;overflow:visible}.portrait img{display:block!important;width:350px!important;height:350px!important;min-width:350px!important;max-width:350px!important;object-fit:cover!important;object-position:center!important}
   .transition-line{margin:20px 0 24px;color:var(--v);font-size:clamp(18px,2vw,27px);font-weight:850;letter-spacing:-.04em}.transition-line span{color:var(--i);padding:0 7px}
   .journey{background:#f1eadc}.journey .eyebrow{color:#8d6414}.path:before{border-color:#d99b24}.path article:before{border-color:#d99b24}.path .next:before{background:var(--g);border-color:var(--i)}
   .case-story{margin:auto 0 0;display:flex;align-items:center;gap:5px;flex-wrap:wrap;font-size:10px;font-weight:900;letter-spacing:.04em}.case-story i{font:inherit;opacity:.7}.case-story b{border:1px solid currentColor;border-radius:999px;padding:5px 7px}
