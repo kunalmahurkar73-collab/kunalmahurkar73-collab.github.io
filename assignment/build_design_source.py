@@ -28,9 +28,6 @@ def button(s,label,x,y,w=3.5,primary=True):
 
 def shell(title,step):
     s=prs.slides.add_slide(prs.slide_layouts[6]); s.background.fill.solid(); s.background.fill.fore_color.rgb=PAPER
-    rect(s,0,0,13.333,.7,INK); text(s,'KM.  /  CHECKOUT LAB',.48,.18,4.1,.36,18,WHITE,True)
-    text(s,'SAFE SIMULATION  ·  NO REAL PAYMENT',9.1,.22,3.8,.27,11,WHITE)
-    text(s,'PROPOSED DESKTOP CHECKOUT  /  DESIGN CONCEPT',.55,.92,8.2,.27,12,TEAL,True)
     text(s,title,.55,1.25,8.7,.57,30,INK,True)
     for i,name in enumerate(['Cart','Address','Delivery','Payment','Review']):
         x=.55+i*2.48; rect(s,x,2.02,2.26,.48,NAVY if i<=step else WHITE,LINE)
@@ -45,7 +42,6 @@ def shell(title,step):
         text(s,'+ ₹7',11.75,5.09,.82,.3,13,INK,True)
     rect(s,9.07,5.52,3.39,.02,LINE); text(s,'Total payable',9.09,5.72,2.1,.4,18,INK,True)
     text(s,'₹214' if title == 'Review your order' else '₹207',11.75,5.72,.82,.4,18,INK,True)
-    text(s,'Educational redesign · editable PowerPoint source',.57,7.08,8.4,.2,10,MUTED)
     return s
 
 def heading(s,label,sub):
@@ -84,5 +80,8 @@ button(s,'Return to review',.9,5.46,3.4)
 s=shell('Demo order confirmed',4); heading(s,'Your simulated order is confirmed','Local demo reference: LOCAL-2026 · no real order was placed.')
 rect(s,.9,4.35,6.75,.75,PAPER,TEAL); text(s,'✓  Confirmation state is clear',1.2,4.59,6,.33,18,TEAL,True)
 button(s,'Reset demo',.9,5.53,2.7)
+for slide in prs.slides:
+    for shape in slide.shapes:
+        shape.top -= Inches(.65)
 path=OUT/'amazon-checkout-editable-design-source.pptx'; prs.save(path)
 print(f'{path} · {len(prs.slides)} editable screens')
