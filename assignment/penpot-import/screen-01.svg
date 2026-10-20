@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+<title>Amazon checkout redesign screen 01</title>
+<rect width="1280" height="720" fill="#f5f6f6"/>
+<rect x="0.0" y="0.0" width="1279.97" height="67.2" rx="10" fill="#131921" stroke="none"/>
+<text x="49.08" y="43.28" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="24.0" font-weight="700">KM.  /  CHECKOUT LAB</text>
+<text x="876.6" y="37.79" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14.67" font-weight="400">SAFE SIMULATION  ·  NO REAL PAYMENT</text>
+<text x="55.8" y="106.32" fill="#007185" font-family="Arial, sans-serif" font-size="16.0" font-weight="700">PROPOSED DESKTOP CHECKOUT  /  DESIGN CONCEPT</text>
+<text x="55.8" y="162.0" fill="#131921" font-family="Arial, sans-serif" font-size="40.0" font-weight="700">Your cart</text>
+<rect x="52.8" y="193.92" width="216.96" height="46.08" rx="10" fill="#232F3E" stroke="#D3D9D9"/>
+<text x="68.28" y="223.81" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="17.33" font-weight="700">01  Cart</text>
+<rect x="290.88" y="193.92" width="216.96" height="46.08" rx="10" fill="#FFFFFF" stroke="#D3D9D9"/>
+<text x="306.36" y="223.81" fill="#535B5E" font-family="Arial, sans-serif" font-size="17.33" font-weight="400">02  Address</text>
+<rect x="528.96" y="193.92" width="216.96" height="46.08" rx="10" fill="#FFFFFF" stroke="#D3D9D9"/>
+<text x="544.44" y="223.81" fill="#535B5E" font-family="Arial, sans-serif" font-size="17.33" font-weight="400">03  Delivery</text>
+<rect x="767.04" y="193.92" width="216.96" height="46.08" rx="10" fill="#FFFFFF" stroke="#D3D9D9"/>
+<text x="782.52" y="223.81" fill="#535B5E" font-family="Arial, sans-serif" font-size="17.33" font-weight="400">04  Payment</text>
+<rect x="1005.12" y="193.92" width="216.96" height="46.08" rx="10" fill="#FFFFFF" stroke="#D3D9D9"/>
+<text x="1020.6" y="223.81" fill="#535B5E" font-family="Arial, sans-serif" font-size="17.33" font-weight="400">05  Review</text>
+<rect x="52.8" y="267.84" width="768.0" height="368.64" rx="10" fill="#FFFFFF" stroke="#D3D9D9"/>
+<rect x="843.84" y="267.84" width="382.08" height="368.64" rx="10" fill="#FFFFFF" stroke="#D3D9D9"/>
+<text x="875.64" y="319.6" fill="#131921" font-family="Arial, sans-serif" font-size="20.0" font-weight="700">ORDER SUMMARY</text>
+<text x="875.64" y="372.03" fill="#131921" font-family="Arial, sans-serif" font-size="18.67" font-weight="400">DIP: A Little Book of Wisdom</text>
+<text x="875.64" y="423.87" fill="#535B5E" font-family="Arial, sans-serif" font-size="18.67" font-weight="400">Item subtotal</text>
+<text x="1142.52" y="423.87" fill="#131921" font-family="Arial, sans-serif" font-size="18.67" font-weight="700">₹207</text>
+<text x="875.64" y="471.87" fill="#535B5E" font-family="Arial, sans-serif" font-size="18.67" font-weight="400">Delivery</text>
+<text x="1132.92" y="471.87" fill="#007185" font-family="Arial, sans-serif" font-size="18.67" font-weight="700">FREE</text>
+<rect x="870.72" y="529.92" width="325.44" height="1.92" rx="10" fill="#D3D9D9" stroke="none"/>
+<text x="875.64" y="575.12" fill="#131921" font-family="Arial, sans-serif" font-size="24.0" font-weight="700">Total payable</text>
+<text x="1131.0" y="575.12" fill="#131921" font-family="Arial, sans-serif" font-size="24.0" font-weight="700">₹207</text>
+<text x="57.72" y="695.01" fill="#535B5E" font-family="Arial, sans-serif" font-size="13.33" font-weight="400">Educational redesign · editable PowerPoint source</text>
+<text x="87.48" y="332.19" fill="#131921" font-family="Arial, sans-serif" font-size="30.67" font-weight="700">DIP: A Little Book of Wisdom</text>
+<text x="87.48" y="368.56" fill="#535B5E" font-family="Arial, sans-serif" font-size="20.0" font-weight="400">Paperback · sample item · ₹207</text>
+<text x="89.4" y="452.45" fill="#131921" font-family="Arial, sans-serif" font-size="21.33" font-weight="700">Quantity</text>
+<rect x="297.6" y="420.48" width="158.4" height="49.92" rx="10" fill="#FFFFFF" stroke="#D3D9D9"/>
+<text x="321.72" y="452.45" fill="#131921" font-family="Arial, sans-serif" font-size="21.33" font-weight="700">−    1    +</text>
+<rect x="86.4" y="530.88" width="355.2" height="46.08" rx="10" fill="#FFD814" stroke="#D3D9D9"/>
+<text x="104.76" y="560.19" fill="#131921" font-family="Arial, sans-serif" font-size="18.67" font-weight="700">Continue to address</text>
+</svg>

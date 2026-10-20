@@ -13,3 +13,7 @@ Captured from the signed-in Amazon India desktop website in Microsoft Edge on 20
 | `cancellation-success.jpg` | Cancellation | Successful cancellation and cancelled book | Name, address and order number excluded |
 
 The original full captures with personal details are stored outside the repository at `D:\MyGutHubProfile\amazon-evidence-private`. Do not copy them into a public repository. An order confirmation and successful cancellation were captured. No payment failure was encountered because cash on delivery was used. These screenshots validate the visible UI state only; they do not establish user difficulty, severity, or measured outcomes.
+
+## Presentation copies
+
+The five files in `clean/` remove visible browser cursor artifacts from otherwise unchanged public crops. `clean_cursor.py` documents the exact pixel rectangles: each tiny region is replaced with a blank region from the same scanlines of the same screenshot. Text, amounts, controls, and order states are outside the replacement rectangles. The original unmodified public crops remain above for comparison. The `cart-item.jpg` and `order-confirmation.jpg` images required no cursor cleanup.

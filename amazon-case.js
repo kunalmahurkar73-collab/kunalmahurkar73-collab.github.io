@@ -1,6 +1,7 @@
 (function(){
   const links=window.amazonCheckoutLinks||{};
-  const items=[['prototype','Explore Interactive Prototype'],['presentation','View UX Presentation'],['walkthrough','Watch 5-Minute Walkthrough']];
+  const items=[['prototype','Explore Interactive Prototype'],['presentation','View UX Presentation'],['design','Editable Design Source'],['walkthrough','Watch 5-Minute Walkthrough']];
+  if(links.penpot) items.splice(3,0,['penpot','Open Penpot Design']);
   const container=document.getElementById('project-actions');
   for(const [key,label] of items){
     const url=links[key];

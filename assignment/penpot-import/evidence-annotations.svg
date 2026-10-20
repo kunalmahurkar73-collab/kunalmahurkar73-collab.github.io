@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="3200" viewBox="0 0 1300 3200">
+  <title>Current experience evidence labels</title>
+  <text x="925" y="45" fill="#131921" font-family="Arial" font-size="28" font-weight="700">Current experience</text>
+  <text x="925" y="76" fill="#52606d" font-family="Arial" font-size="16">Amazon India desktop web · 20 Oct 2026</text>
+  <text x="925" y="150" fill="#007185" font-family="Arial" font-size="19" font-weight="700">EV-01 · Cart</text>
+  <text x="925" y="182" fill="#131921" font-family="Arial" font-size="15">Item, quantity, coupon and delivery.</text>
+  <text x="925" y="545" fill="#007185" font-family="Arial" font-size="19" font-weight="700">EV-02 · Address</text>
+  <text x="925" y="577" fill="#131921" font-family="Arial" font-size="15">Six saved choices indicated.</text>
+  <text x="925" y="608" fill="#52606d" font-family="Arial" font-size="14">Private rows withheld.</text>
+  <text x="925" y="765" fill="#007185" font-family="Arial" font-size="19" font-weight="700">EV-03 · Payment</text>
+  <text x="925" y="797" fill="#131921" font-family="Arial" font-size="15">Card, net banking, UPI and COD.</text>
+  <text x="925" y="1560" fill="#007185" font-family="Arial" font-size="19" font-weight="700">EV-04 · Delivery</text>
+  <text x="925" y="1592" fill="#131921" font-family="Arial" font-size="15">Fastest and later Friday options.</text>
+  <text x="925" y="2160" fill="#007185" font-family="Arial" font-size="19" font-weight="700">EV-05 · Review</text>
+  <text x="925" y="2192" fill="#131921" font-family="Arial" font-size="15">₹207 + ₹7 COD fee = ₹214 total.</text>
+  <text x="925" y="2465" fill="#007185" font-family="Arial" font-size="19" font-weight="700">EV-06 · Confirmation</text>
+  <text x="925" y="2497" fill="#131921" font-family="Arial" font-size="15">Order placed state visible.</text>
+  <text x="925" y="2650" fill="#007185" font-family="Arial" font-size="19" font-weight="700">EV-07 · Cancellation</text>
+  <text x="925" y="2682" fill="#131921" font-family="Arial" font-size="15">Successful cancellation visible.</text>
+  <text x="925" y="3040" fill="#52606d" font-family="Arial" font-size="14">Screenshots show UI facts, not tested impact.</text>
+</svg>

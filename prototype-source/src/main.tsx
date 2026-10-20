@@ -3,6 +3,7 @@ import {createRoot} from 'react-dom/client';
 import {motion} from 'motion/react';
 import {ArrowLeft, ArrowRight, Check, CircleHelp, CreditCard, MapPin, Minus, Plus, RotateCcw, ShieldCheck, ShoppingBag, Truck, Wallet} from 'lucide-react';
 import './style.css';
+import './amazon-theme.css';
 
 type Step='cart'|'address'|'delivery'|'payment'|'review'|'processing'|'success'|'failure';
 type Method='UPI'|'Card'|'Cash on delivery';
