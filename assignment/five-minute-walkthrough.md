@@ -1,53 +1,65 @@
-# Five-minute walkthrough script
+# Five-minute assignment presentation script
 
-**Status:** recording planned. Replace the walkthrough placeholder only after a real recording URL is verified. This script is about 590 spoken words; allow time to click through the prototype.
+Read only the quoted lines. The screen cues are for recording. This follows the new ten-slide PPT/PDF.
 
-## 0:00–0:30 · Opening · Slide 1
+## 0:00–0:25 · Slide 1 · Purpose
 
-**On screen:** title slide, then case-study hero.
+**Show:** title slide.
 
-“Hi, I’m Kunal. This project evaluates one Amazon India desktop checkout journey, from cart through order confirmation and cancellation. My goal was to separate what I could actually observe from what I only suspected, then turn the strongest opportunities into a testable redesign. This is an independent educational study. Amazon has not implemented these concepts.”
+“Hi, I’m Kunal. I evaluated one Amazon India desktop checkout journey and redesigned the parts where clearer information might help. I’ll show what the real interface displayed, which usability principles I used to evaluate it, and what changed in my design.”
 
-## 0:30–1:00 · Scope · Slides 2–3
+## 0:25–0:50 · Slide 2 · Evidence
 
-**On screen:** move through the journey map and scroll the genuine screenshot gallery.
+**Show:** address, delivery, and cancellation crops.
 
-“I captured seven desktop web screenshots in Edge on October twentieth, twenty twenty-six. They show a book in the cart, an address step, payment choices, delivery choices, the final total, an order confirmation, and a successful cancellation. The cash-on-delivery order was cancelled immediately. The public crops exclude personal details. A screenshot can establish a visible interface fact, but it cannot tell me whether a shopper was confused or how long they took.”
+“I captured seven public screenshot crops from one checkout. I placed a cash-on-delivery order and cancelled it immediately. The captures show interface states, but they cannot prove that shoppers were confused or that a task took too long. I did not conduct participant testing or observe a payment failure.”
 
-## 1:00–2:15 · Heuristic evaluation · Slide 4
+## 0:50–1:25 · Slide 3 · Cost
 
-**On screen:** point to EV-05, then the finding matrix.
+**Show:** original review total beside the proposed review.
 
-“The most concrete cost observation is at review: the item costs two hundred and seven rupees, a seven-rupee cash-on-delivery fee appears, and the final total is two hundred and fourteen. My UX-01 question is whether shoppers notice and understand that fee before placing an order. That is a hypothesis, mapped to visibility of system status. I also evaluated the volume of decisions in cart and payment, edit controls at review, payment terminology, and pointer targets. In each case, I document the UI element separately from the possible user impact. One particularly important boundary: I did not observe a payment failure. The recovery screen is a proposed risk scenario, not a claim that Amazon’s current recovery is broken.”
+“The clearest observation is the final cost: the item is ₹207, a ₹7 cash-on-delivery fee appears, and the total is ₹214. The fee is visible. The open question is whether shoppers notice it before placing an order. That is a possible concern under Nielsen’s visibility of system status heuristic. My redesign keeps an itemized total beside the decision and gives previous choices direct Edit actions. I would ask shoppers to state the amount and fee without prompting.”
 
-## 2:15–3:00 · UX laws · Slide 5
+## 1:25–2:00 · Slide 4 · Payment choices
 
-**On screen:** show payment choices, then the interactive Before/After payment comparison.
+**Show:** original payment options and proposed payment screen.
 
-“Three interaction laws guided the concepts. Hick’s Law suggests that grouping payment and delivery choices could make decisions easier, but I need to measure that. Fitts’s Law guides the size and placement of desktop pointer targets; I have not measured a current violation. Jakob’s Law suggests familiar edit patterns and retained state. Amazon already shows Change links, so the design opportunity is to make editing clearer and preserve earlier choices, not to invent a missing feature.”
+“The real payment screen presents several methods, including card, net banking, UPI scan and pay, and cash on delivery. I mapped the potential comprehension issue to Nielsen’s match with familiar language and to Hick’s Law, which concerns decision time as choices increase. In my design, methods have simpler descriptions and the cash-on-delivery fee appears with that option. I have not measured whether the original choices slow shoppers down.”
 
-## 3:00–4:15 · Design and prototype · Slide 6
+## 2:00–2:35 · Slide 5 · Cart controls
 
-**On screen:** open the editable design source, compare the original review crop with the proposed review screen, then enter the React prototype.
+**Show:** original cart crop and proposed cart.
 
-“The redesigned review screen places an itemized summary next to the decision, labels the final payable total, and gives each choice a direct Edit action. The proposed payment screen shows method-specific fees in plain language. I created nine editable screen designs covering cart, address, delivery, payment, review, processing, failure, recovery, and confirmation. The interactive prototype lets me change quantity, select sample options, and see totals recalculate. I can place only a simulated order; it never asks for real payment information. I can also trigger a simulated failure, inspect the explicit ‘no payment was taken’ message, retry safely, or change method. Progress persists after refresh, and Reset Demo starts over.”
+“The cart shows the item, quantity controls, and promotion content. I considered Nielsen’s minimalist design and efficiency heuristics, along with Hick’s Law and Fitts’s Law. The possible risks are competing decisions and small or inconsistent click targets. Those are hypotheses because the screenshot provides no timing or missed-click data. The redesign gives quantity and the next action a clearer hierarchy.”
 
-## 4:15–5:00 · Priorities and validation · Slide 7
+## 2:35–3:05 · Slide 6 · Editing
 
-**On screen:** priorities and metrics, then finish on the case-study hero.
+**Show:** proposed review screen.
 
-“My first experiments are final-cost comprehension, safe failure recovery, and editing without rework. These priorities reflect potential user risk, evidence confidence, and implementation effort; they are expert estimates. Next I would run five moderated desktop sessions with India-based shoppers. I would ask them to state the payable amount and fee, make a late edit, and recover from a simulated failure, recording task success, time, errors, and confidence. Completion, abandonment, and recovery baselines have not been measured. The core lesson is simple: use authentic evidence to frame questions, prototype the proposed answer, and let observed user behavior determine the next product decision. Thank you.”
+“Amazon already offered Change links during review, so I am not claiming editing is missing. My design makes those actions more prominent and keeps earlier selections when someone edits. This relates to user control, familiar patterns under Jakob’s Law, and target size under Fitts’s Law. The test is whether a shopper can change an address or payment method without rework.”
 
-## Slide notes and recording checklist
+## 3:05–3:35 · Slide 7 · Recovery boundary
 
-| Slide | Speaking focus | Screen action |
-|---|---|---|
-| 1 | Product, role, question | Show title and project hero. |
-| 2 | Captured journey | Trace cart to outcome. |
-| 3 | Evidence limits | Enlarge original review and payment crops. |
-| 4 | Six evaluations | Emphasize fact vs hypothesis. |
-| 5 | Three UX laws | Open Before/After payment view. |
-| 6 | Redesign | Show editable shapes, then simulated failure and retry. |
-| 7 | Priorities and test | State no measured baseline, close on the portfolio. |
+**Show:** real confirmation crop and proposed failure screen.
 
-Before recording: open the case study and prototype; reset demo; preload slide deck; verify browser zoom, audio, and cursor placement; keep personal Amazon account tabs closed; confirm that the final recording link is public before publishing it.
+“The observed order succeeded and was later cancelled. I did not see a real payment failure. I designed a simulated failure because recovery is important to test, not because I proved Amazon’s current recovery is broken. The concept says no payment was taken, preserves the shopper’s choices, and offers retry or a different payment method. This maps to Nielsen’s error recovery heuristic.”
+
+## 3:35–4:05 · Slide 8 · Heuristic map
+
+**Show:** six-row summary.
+
+“This table brings the evidence, possible risk, and design response together. Six Nielsen heuristics informed the work. The observations are real; the user impacts remain unverified. The failure row is explicitly a design scenario.”
+
+## 4:05–4:30 · Slide 9 · Design response
+
+**Show:** payment, review, and failure concepts; briefly open the interactive prototype if time permits.
+
+“I created nine editable checkout screens in Penpot and PowerPoint, plus an interactive prototype. The prototype updates totals when quantity or payment changes, retains choices during edits, and demonstrates both success and safe failure recovery. It never takes a real payment or places an Amazon order.”
+
+## 4:30–5:00 · Slide 10 · Validation
+
+**Show:** priorities and measures.
+
+“My next step is five moderated desktop sessions with India-based shoppers. I would ask them to explain the total and fee, make a late edit, and recover from a simulated failure. I would record unaided success, time, errors, missed clicks, and confidence. None of those baselines has been measured yet. The lesson is to use real evidence to frame the question, then test the design before claiming an improvement. Thank you.”
+
+Before recording, reset the prototype to Cart, open the deck in presentation mode, and keep personal Amazon account tabs closed.

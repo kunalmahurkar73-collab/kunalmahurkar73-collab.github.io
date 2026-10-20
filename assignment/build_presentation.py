@@ -1,200 +1,244 @@
-"""Build the seven-slide Amazon India web checkout assignment deck.
-
-Run from the repository root: python assignment/build_presentation.py
-The PDF is exported from the PPTX by Microsoft PowerPoint on Windows.
-"""
-
+"""Build the evidence-first Amazon India checkout assignment deck."""
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageOps, ImageDraw
 from pptx import Presentation
 from pptx.dml.color import RGBColor
-from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import PP_ALIGN
 from pptx.util import Inches, Pt
 
-
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assignment"
 PPTX = OUT / "amazon-india-web-checkout-ux-evaluation.pptx"
 PDF = OUT / "amazon-india-web-checkout-ux-evaluation.pdf"
-
-INK = RGBColor(27, 34, 43)
-MUTED = RGBColor(86, 96, 107)
-ORANGE = RGBColor(227, 112, 35)
-PAPER = RGBColor(250, 248, 244)
-LINE = RGBColor(218, 215, 209)
+PREVIEWS = OUT / "slide-previews"
+NAVY = RGBColor(19, 25, 33)
+INK = RGBColor(15, 17, 17)
+MUTED = RGBColor(76, 87, 91)
+TEAL = RGBColor(0, 113, 133)
+AMBER = RGBColor(196, 85, 0)
+PAPER = RGBColor(247, 248, 248)
 WHITE = RGBColor(255, 255, 255)
+LINE = RGBColor(213, 217, 217)
 
-prs = Presentation()
-prs.slide_width = Inches(13.333)
-prs.slide_height = Inches(7.5)
-
-
-def box(slide, x, y, w, h, color=PAPER, stroke=None, radius=False):
-    shape = slide.shapes.add_shape(
-        MSO_SHAPE.ROUNDED_RECTANGLE if radius else MSO_SHAPE.RECTANGLE,
-        Inches(x), Inches(y), Inches(w), Inches(h),
-    )
-    shape.fill.solid()
-    shape.fill.fore_color.rgb = color
-    shape.line.fill.background() if stroke is None else None
-    if stroke is not None:
-        shape.line.color.rgb = stroke
-    return shape
+deck = Presentation()
+deck.slide_width = Inches(13.333)
+deck.slide_height = Inches(7.5)
 
 
-def txt(slide, text, x, y, w, h, size=18, color=INK, bold=False, align=None):
+def text(slide, value, x, y, w, h, size=18, color=INK, bold=False, align=None):
     shape = slide.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
-    tf = shape.text_frame
-    tf.clear()
-    tf.word_wrap = True
-    tf.margin_left = tf.margin_right = Inches(.02)
-    tf.margin_top = tf.margin_bottom = Inches(.02)
-    for i, line in enumerate(text.split("\n")):
-        p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
-        p.text = line
-        p.font.name = "Aptos"
-        p.font.size = Pt(size)
-        p.font.bold = bold
-        p.font.color.rgb = color
-        p.space_after = Pt(5)
+    frame = shape.text_frame
+    frame.clear()
+    frame.word_wrap = True
+    frame.margin_left = frame.margin_right = Inches(.02)
+    frame.margin_top = frame.margin_bottom = Inches(.01)
+    for index, line in enumerate(value.split("\n")):
+        paragraph = frame.paragraphs[0] if index == 0 else frame.add_paragraph()
+        paragraph.text = line
+        paragraph.font.name = "Arial"
+        paragraph.font.size = Pt(size)
+        paragraph.font.bold = bold
+        paragraph.font.color.rgb = color
+        paragraph.space_after = Pt(7)
         if align is not None:
-            p.alignment = align
+            paragraph.alignment = align
     return shape
 
 
-def pic(slide, name, x, y, w, max_h):
+def image(slide, path, x, y, w, h):
+    path = Path(path)
+    with Image.open(path) as original:
+        ratio = original.width / original.height
+    width = min(w, h * ratio)
+    height = min(h, w / ratio)
+    slide.shapes.add_picture(str(path), Inches(x + (w - width) / 2), Inches(y + (h - height) / 2), width=Inches(width), height=Inches(height))
+
+
+def evidence(name):
     cleaned = ROOT / "evidence" / "clean" / Path(name).with_suffix(".png")
-    path = cleaned if cleaned.exists() else ROOT / "evidence" / name
-    with Image.open(path) as im:
-        ratio = im.height / im.width
-    h = min(max_h, w * ratio)
-    actual_w = min(w, h / ratio)
-    slide.shapes.add_picture(str(path), Inches(x), Inches(y), width=Inches(actual_w), height=Inches(h))
-    return h
+    return cleaned if cleaned.exists() else ROOT / "evidence" / name
 
 
-def base(title, n, note):
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
-    slide.background.fill.solid()
-    slide.background.fill.fore_color.rgb = PAPER
-    box(slide, .55, .43, .10, .34, ORANGE)
-    txt(slide, title, .84, .34, 11.8, .70, 29, INK, True)
-    box(slide, .65, 7.10, 12.05, .012, LINE)
-    txt(slide, "AMAZON INDIA WEB CHECKOUT  /  INDEPENDENT EDUCATIONAL STUDY", .7, 7.17, 10.8, .2, 8, MUTED)
-    txt(slide, f"{n:02d} / 07", 11.65, 7.16, .95, .2, 8, MUTED, align=PP_ALIGN.RIGHT)
-    slide.notes_slide.notes_text_frame.text = note
-    return slide
+def design(number):
+    return OUT / "design-previews" / f"screen-{number:02d}.png"
 
 
-s = base("Amazon India web checkout", 1, "Scope: desktop web in Edge, captured 20 October 2026. Independent educational UX case study; not affiliated with Amazon. Objective: document the visible path and test redesign hypotheses. Prototype: https://kunalmahurkar.is-a.dev/amazon-checkout-prototype/")
-txt(s, "UX evaluation & redesign", .8, 1.55, 7.2, .7, 37, INK, True)
-txt(s, "Cart → delivery → payment → review → confirmation → cancellation", .82, 2.42, 7.5, .72, 23, MUTED)
-box(s, .82, 3.52, 7.0, 1.32, WHITE, LINE, True)
-txt(s, "Objective", 1.13, 3.73, 2.2, .36, 17, ORANGE, True)
-txt(s, "Make the final cost, choices, editing and recovery easier to understand, then validate with shoppers.", 1.13, 4.05, 6.25, .62, 18)
-pic(s, "cart-item.jpg", 8.45, 1.48, 4.0, 2.7)
-txt(s, "7 genuine desktop captures  •  1 placed and cancelled COD order", 8.46, 4.95, 3.9, 1.0, 17, MUTED)
+def slide(title, number, note, subtitle=None):
+    item = deck.slides.add_slide(deck.slide_layouts[6])
+    item.background.fill.solid()
+    item.background.fill.fore_color.rgb = PAPER
+    text(item, f"{number:02d}  AMAZON INDIA CHECKOUT", .62, .27, 5.4, .28, 10, TEAL, True)
+    text(item, title, .62, .70, 12.05, .68, 29, NAVY, True)
+    if subtitle:
+        text(item, subtitle, .64, 1.40, 12.0, .48, 15, MUTED)
+    text(item, "Kunal Mahurkar · Independent UX evaluation · 20 Oct 2026", .62, 7.16, 10.5, .18, 9, MUTED)
+    text(item, f"{number:02d} / 10", 11.92, 7.15, .77, .18, 9, MUTED, align=PP_ALIGN.RIGHT)
+    item.notes_slide.notes_text_frame.text = note
+    return item
 
-s = base("User and checkout journey", 2, "The persona is an assumption, not an interviewed participant. The journey reflects browser captures from 20 October 2026. The six saved addresses were visible by count, but personal address information was withheld from publication.")
-txt(s, "Assumption-based persona", .82, 1.22, 4.1, .4, 19, ORANGE, True)
-txt(s, "An India-based desktop shopper who wants to confirm the payable amount, choose delivery and payment, and know whether the order succeeded.", .82, 1.67, 4.3, 1.52, 22)
-txt(s, "Context", .82, 3.66, 4.1, .4, 18, ORANGE, True)
-txt(s, "Signed-in Amazon India web checkout; a ₹207 book, cash on delivery, ₹7 fee, ₹214 final total.", .82, 4.12, 4.2, 1.2, 20)
-stages = [("01", "Cart", "Item and quantity"), ("02", "Address", "Saved choices"), ("03", "Payment", "Method selection"), ("04", "Delivery", "Speed choice"), ("05", "Review", "₹214 total"), ("06", "Outcome", "Place and cancel")]
-for i, (num, head, detail) in enumerate(stages):
-    y = 1.22 + i * .88
-    box(s, 5.72, y, 6.65, .72, WHITE, LINE, True)
-    txt(s, num, 6.0, y + .17, .46, .3, 13, ORANGE, True)
-    txt(s, head, 6.55, y + .10, 2.15, .42, 19, INK, True)
-    txt(s, detail, 8.73, y + .17, 3.24, .3, 14, MUTED)
 
-s = base("Observed current experience", 3, "Original screenshots: evidence/cart-item.jpg, evidence/payment-methods.jpg, evidence/review-total.jpg, evidence/order-confirmation.jpg and evidence/cancellation-success.jpg. All were captured from the signed-in desktop web flow on 20 October 2026. Public crops exclude personal account information. Display copies of payment, review and cancellation remove cursor artifacts only; originals remain in the evidence folder. Screenshot evidence establishes visible states, not participant friction.")
-pic(s, "cart-item.jpg", .82, 1.22, 5.15, 2.42)
-txt(s, "Cart: item, quantity, coupon and delivery promise", .84, 3.62, 5.0, .6, 15, MUTED)
-pic(s, "payment-methods.jpg", 6.61, 1.22, 2.46, 2.18)
-txt(s, "Payment methods", 6.62, 3.63, 2.7, .34, 15, MUTED)
-pic(s, "review-total.jpg", 9.44, 1.28, 2.88, 1.26)
-txt(s, "Review: ₹207 + ₹7 COD fee = ₹214", 9.44, 2.58, 2.93, .83, 15, MUTED)
-box(s, .82, 4.36, 11.48, 1.87, WHITE, LINE, True)
-pic(s, "order-confirmation.jpg", 1.06, 4.60, 4.42, .66)
-pic(s, "cancellation-success.jpg", 6.03, 4.52, 2.55, 1.35)
-txt(s, "Order placed; then successfully cancelled", 8.84, 4.80, 2.85, .8, 16, INK, True)
-txt(s, "No payment failure was encountered or captured.", .84, 6.44, 11.3, .35, 15, ORANGE, True)
+def label(item, value, x, y, w, color=TEAL):
+    text(item, value.upper(), x, y, w, .28, 11, color, True)
 
-s = base("Nielsen heuristic audit", 4, "All six candidate usability issues are hypotheses. Provisional severity is a risk ranking, not a validated defect rating. UX-01 is grounded in the observed ₹7 cash-on-delivery fee at review; whether it confused users is untested. UX-05 has no original payment-failure screenshot. See the case study for original evidence and full rationale.")
-txt(s, "Observed interface facts support the questions below; user impact needs testing.", .82, 1.05, 11.3, .5, 17, MUTED)
+
+def point(item, heading, body, x, y, w, body_h=.75):
+    text(item, heading, x, y, w, .36, 17, NAVY, True)
+    text(item, body, x, y + .43, w, body_h, 15, MUTED)
+
+
+s = slide("What the checkout shows, and what I changed", 1,
+          "I observed one Amazon India desktop checkout, placed a cash-on-delivery order and cancelled it. This deck separates visible facts from usability hypotheses and shows the redesign response.",
+          "A single desktop journey, six heuristic questions, and nine proposed screens")
+text(s, "REAL INTERFACE", .75, 2.08, 3.7, .32, 13, TEAL, True)
+text(s, "Seven public screenshot crops from one checkout and cancellation", .75, 2.52, 4.25, 1.12, 23, NAVY, True)
+text(s, "REDESIGN", .75, 4.25, 3.7, .32, 13, AMBER, True)
+text(s, "Editable screen designs and a working checkout simulation", .75, 4.68, 4.25, 1.12, 23, NAVY, True)
+image(s, design(5), 5.55, 1.99, 6.87, 3.87)
+text(s, "Proposed review screen. This is a concept, not an Amazon screen.", 5.6, 6.03, 6.72, .42, 12, MUTED)
+
+s = slide("Evidence: one observed journey", 2,
+          "These are genuine public crops from one desktop browser journey. They establish the displayed UI, not shopper confusion or conversion performance.",
+          "Seven original crops. One cash-on-delivery order placed and cancelled immediately.")
+image(s, evidence("address-stage-header.jpg"), .70, 2.05, 3.76, 1.45)
+image(s, evidence("delivery-options.jpg"), 4.78, 2.03, 3.76, 2.42)
+image(s, evidence("cancellation-success.jpg"), 8.73, 2.03, 3.82, 2.42)
+label(s, "EV-02 · Address", .77, 4.67, 3.5)
+label(s, "EV-04 · Delivery", 4.85, 4.67, 3.4)
+label(s, "EV-07 · Cancellation", 8.8, 4.67, 3.4)
+text(s, "Address choices are indicated; personal rows are withheld.", .77, 5.07, 3.45, .92, 15)
+text(s, "Two delivery choices appear, both marked free.", 4.85, 5.07, 3.4, .92, 15)
+text(s, "Cancellation completed after the observed order.", 8.8, 5.07, 3.4, .92, 15)
+text(s, "Evidence boundary: no participants, analytics baseline, or real payment failure were observed.", .77, 6.37, 11.75, .43, 15, AMBER, True)
+
+s = slide("01  Final cost may be easy to miss", 3,
+          "Observed: item 207 rupees, cash-on-delivery fee 7 rupees, total 214 rupees. Visibility of system status is the relevant heuristic. The fee is visible, so missed comprehension is a hypothesis, not a proven violation. Test by asking for the total and fee unaided.",
+          "Nielsen #1: visibility of system status · Current fact versus design response")
+label(s, "Observed on Amazon · EV-05", .75, 2.02, 5.48)
+image(s, evidence("review-total.jpg"), .72, 2.45, 5.68, 2.10)
+point(s, "₹207 item + ₹7 COD fee = ₹214 total", "The final amount is visible at review. Whether shoppers notice the fee before commitment is unmeasured.", .77, 4.83, 5.45, 1.0)
+label(s, "Proposed review", 6.87, 2.02, 5.55, AMBER)
+image(s, design(5), 6.84, 2.45, 5.63, 2.95)
+text(s, "Itemized summary beside the decision; explicit total payable and Edit actions.", 6.9, 5.65, 5.44, .73, 16)
+text(s, "Test: ask shoppers to state the total and the reason for the extra ₹7 before clicking.", .78, 6.65, 11.75, .31, 14, TEAL, True)
+
+s = slide("02  Payment methods need cost context", 4,
+          "The screenshot shows cards, net banking, UPI scan and pay, and cash on delivery. The possible comprehension cost is a hypothesis. Nielsen's match with the real world and Hick's Law guide simpler labels and fee disclosure. No selection time was measured.",
+          "Nielsen #2: match to familiar language · Hick's Law: decision effort")
+label(s, "Observed on Amazon · EV-03", .74, 1.94, 5.52)
+image(s, evidence("payment-methods.jpg"), .73, 2.30, 5.45, 3.50)
+label(s, "Proposed payment design", 6.79, 1.94, 5.63, AMBER)
+image(s, design(4), 6.70, 2.30, 5.72, 3.35)
+text(s, "Visible fact: multiple payment labels and an insufficient balance message.", .75, 5.98, 5.57, .57, 15)
+text(s, "Change: group methods, use plain labels, and show the COD fee at selection.", 6.82, 5.98, 5.53, .57, 15)
+text(s, "Test: compare method comprehension and selection time; a current violation is unproven.", .75, 6.68, 11.68, .31, 14, TEAL, True)
+
+s = slide("03  Choices and controls compete for attention", 5,
+          "The cart crop shows item controls and promotion content. This can raise choice and pointer concerns, but a screenshot does not measure hesitation or missed clicks. Nielsen's minimalist design and flexibility heuristics, plus Hick's and Fitts's laws, motivate grouping and more consistent click areas.",
+          "Nielsen #8 and #7 · Hick's Law and Fitts's Law")
+label(s, "Observed cart · EV-01", .75, 1.95, 5.52)
+image(s, evidence("cart-item.jpg"), .73, 2.31, 5.68, 2.85)
+label(s, "Proposed cart", 6.85, 1.95, 5.49, AMBER)
+image(s, design(1), 6.78, 2.31, 5.62, 2.85)
+point(s, "Hypothesis: competing decisions", "Promotion content and quantity control share the cart view. Decision effort has not been timed.", .78, 5.45, 5.48, .75)
+point(s, "Change: clearer action hierarchy", "Keep quantity and continue actions prominent, with larger consistent click areas.", 6.89, 5.45, 5.46, .75)
+
+s = slide("04  Editing should preserve the journey", 6,
+          "Change links were observed during review, so I do not claim Amazon lacks editing. The public review crop retains cost information rather than the address rows. The redesign presents direct Edit actions and keeps selections. Nielsen's user control and freedom, Jakob's Law and Fitts's Law inform this concept.",
+          "Nielsen #3 and #7 · Jakob's Law: familiar editing · Fitts's Law: target size")
+image(s, design(5), .74, 1.96, 7.00, 3.94)
+label(s, "What was observed", 8.05, 2.07, 4.36)
+text(s, "The review flow offered Change links. The public crop does not show those controls or prove rework.", 8.05, 2.46, 4.30, 1.10, 17)
+label(s, "What I changed", 8.05, 4.05, 4.36, AMBER)
+text(s, "Each decision has a direct Edit action. The interactive prototype keeps previous selections after editing.", 8.05, 4.44, 4.30, 1.12, 17)
+text(s, "Test: change address and payment from review; record wrong turns and retained state.", .78, 6.47, 11.6, .40, 15, TEAL, True)
+
+s = slide("05  Failure recovery is a design scenario", 7,
+          "The observed order succeeded and was later cancelled. There is no real payment-failure capture. Nielsen's error recovery heuristic identifies a high-risk scenario to test, not an established Amazon defect. The concept states that no payment was taken and offers retry or method change.",
+          "Nielsen #9: help users recognize, diagnose, and recover from errors")
+label(s, "Observed outcome · EV-06", .76, 2.02, 4.10)
+image(s, evidence("order-confirmation.jpg"), .74, 2.43, 4.45, 1.27)
+text(s, "The observed order succeeded. No failure screen was captured.", .77, 4.02, 4.26, .86, 17)
+label(s, "Proposed failure state", 5.47, 2.02, 6.90, AMBER)
+image(s, design(7), 5.42, 2.43, 7.00, 3.88)
+text(s, "The concept makes transaction status explicit and offers safe recovery.", .78, 6.58, 11.58, .36, 15, TEAL, True)
+
+s = slide("Heuristic map: observation, risk, response", 8,
+          "The six rows summarize which Nielsen heuristic is relevant. None is presented as a verified user harm. Five observations come from the real journey; payment failure is a proposed scenario. Severity is expert judgement and must be checked through user testing.",
+          "A heuristic concern is an expert assessment. A user impact requires a user study.")
 rows = [
-    ("01", "Final cost clarity", "Visibility of status", "Review shows ₹7 COD fee", "3/4"),
-    ("02", "Choice overload", "Minimalist design", "Coupon and extra-choice screens", "2/4"),
-    ("03", "Edit without rework", "User control", "Change links at review", "3/4"),
-    ("04", "Payment language", "Real-world match", "Card, UPI, COD labels", "2/4"),
-    ("05", "Failure recovery", "Error recovery", "Failure evidence missing", "4/4"),
-    ("06", "Primary control ease", "Efficiency of use", "Controls visible; targets unmeasured", "2/4"),
+    ("#1 Visibility", "₹7 COD fee and ₹214 total visible", "Fee comprehension unknown", "Persistent itemized total"),
+    ("#2 Real-world match", "Several payment labels shown", "Meaning or fee may need context", "Plain labels and fee at choice"),
+    ("#3 User control", "Change links observed at review", "Rework not established", "Direct Edit, retained choices"),
+    ("#7 Efficiency", "Quantity and Change controls visible", "Pointer misses unmeasured", "Consistent click targets"),
+    ("#8 Minimalism", "Promotions and choices share view", "Decision effort unmeasured", "Clearer hierarchy"),
+    ("#9 Error recovery", "No failure captured", "Scenario only", "Explicit status and safe retry"),
 ]
-headers = [("ID", .86, .5), ("Evaluation question", 1.38, 3.15), ("Heuristic", 4.55, 2.68), ("Evidence boundary", 7.28, 3.67), ("Risk", 11.17, 1.0)]
-for label, x, w in headers:
-    txt(s, label, x, 1.69, w, .36, 13, ORANGE, True)
-for i, (id_, issue, heur, ev, risk) in enumerate(rows):
-    y = 2.10 + i * .66
-    box(s, .79, y, 11.56, .57, WHITE if i % 2 == 0 else PAPER)
-    for val, x, w, sz in [(id_, .87, .48, 15), (issue, 1.38, 3.10, 16), (heur, 4.55, 2.68, 15), (ev, 7.28, 3.67, 14), (risk, 11.17, 1.0, 15)]:
-        txt(s, val, x, y + .12, w, .34, sz, INK, i == 0)
-txt(s, "All six are hypotheses; severity scores are provisional. No participant usability test has been run.", .84, 6.37, 11.6, .44, 15, ORANGE, True)
+table = s.shapes.add_table(7, 4, Inches(.66), Inches(2.06), Inches(12.0), Inches(4.08)).table
+for i, width in enumerate((2.11, 3.16, 3.16, 3.57)):
+    table.columns[i].width = Inches(width)
+for column, heading in enumerate(("Heuristic", "Observed", "Risk or limit", "Proposed change")):
+    table.cell(0, column).text = heading
+for row, values in enumerate(rows, 1):
+    for column, value in enumerate(values):
+        table.cell(row, column).text = value
+for row in range(7):
+    for col in range(4):
+        cell = table.cell(row, col)
+        cell.fill.solid()
+        cell.fill.fore_color.rgb = NAVY if row == 0 else (WHITE if row % 2 else PAPER)
+        cell.margin_left = Inches(.13)
+        cell.margin_right = Inches(.09)
+        cell.margin_top = Inches(.10)
+        cell.margin_bottom = Inches(.06)
+        for paragraph in cell.text_frame.paragraphs:
+            paragraph.font.name = "Arial"
+            paragraph.font.size = Pt(12 if row else 13)
+            paragraph.font.bold = row == 0 or col == 0
+            paragraph.font.color.rgb = WHITE if row == 0 else INK
+text(s, "No measured conversion, error, time, or satisfaction baseline is available.", .70, 6.42, 11.85, .34, 14, AMBER, True)
 
-s = base("UX laws as design considerations", 5, "Hick's Law: complex choice sets can lengthen decision time; linked to UX-02. Fitts's Law: target acquisition depends on size and distance; linked to UX-06. Jakob's Law: familiar conventions shape expectation; linked to UX-03. None of these law violations has been established for Amazon by the screenshots alone.")
-laws = [
-    ("Hick’s Law", "UX-02", "Many choices can slow decisions.", "Group delivery and payment choices; reveal secondary details when needed.", "Measure selection time."),
-    ("Fitts’s Law", "UX-06", "Small or distant controls take more effort to acquire.", "Use clear, adequately sized primary and Edit controls.", "Measure missed clicks."),
-    ("Jakob’s Law", "UX-03", "Shoppers expect familiar checkout editing patterns.", "Keep direct Edit links and preserve earlier choices.", "Measure wrong turns."),
-]
-for i, (name, issue, law, rec, metric) in enumerate(laws):
-    x = .84 + i * 4.12
-    box(s, x, 1.47, 3.82, 4.83, WHITE, LINE, True)
-    box(s, x, 1.47, 3.82, .08, ORANGE)
-    txt(s, name, x + .25, 1.83, 3.36, .55, 24, INK, True)
-    txt(s, issue + "  ·  HYPOTHESIS", x + .25, 2.43, 3.3, .34, 13, ORANGE, True)
-    txt(s, law, x + .25, 2.97, 3.32, 1.0, 17)
-    txt(s, rec, x + .25, 4.00, 3.32, 1.2, 17, MUTED)
-    txt(s, metric, x + .25, 5.67, 3.32, .35, 14, ORANGE, True)
-txt(s, "These laws guide the redesign; the screenshots alone do not establish a violation.", .84, 6.52, 11.8, .4, 15, MUTED)
+s = slide("The new design makes decisions more explicit", 9,
+          "Three proposed screens show the design response. Payment exposes method-specific cost, review keeps an itemized total and direct edits, and failure communicates transaction status with recovery options. They are editable concepts; the React prototype demonstrates behavior.",
+          "Nine editable screens in Penpot and PowerPoint. A separate React prototype demonstrates the flow.")
+for x, number, title, caption in ((.73, 4, "Payment", "Fee shown with the method"), (4.75, 5, "Review", "Total and edits together"), (8.78, 7, "Failure", "Status plus recovery")):
+    image(s, design(number), x, 2.06, 3.78, 2.42)
+    text(s, title, x, 4.76, 3.69, .40, 20, NAVY, True)
+    text(s, caption, x, 5.22, 3.66, .67, 15, MUTED)
+text(s, "Prototype: kunalmahurkar.is-a.dev/amazon-checkout-prototype/", .76, 6.52, 11.83, .31, 15, TEAL, True)
 
-s = base("Before / after: review and recovery", 6, "Before is the genuine Amazon India review crop, evidence/review-total.jpg. After is a design concept, not an Amazon screen. The concept emphasizes a single itemized total, contextual Edit controls and safe payment retry. Prototype: https://kunalmahurkar.is-a.dev/amazon-checkout-prototype/")
-txt(s, "BEFORE  ·  observed Amazon review", .84, 1.31, 5.75, .4, 16, ORANGE, True)
-box(s, .82, 1.78, 5.66, 3.88, WHITE, LINE, True)
-pic(s, "review-total.jpg", 1.06, 2.20, 5.12, 1.56)
-txt(s, "The ₹7 COD fee and ₹214 final total are visible. Whether shoppers notice the fee is untested.", 1.08, 4.36, 4.95, 1.05, 18, MUTED)
-txt(s, "AFTER  ·  proposed design concept", 6.90, 1.31, 5.52, .4, 16, ORANGE, True)
-box(s, 6.86, 1.78, 5.65, 3.88, WHITE, LINE, True)
-design = OUT / "design-previews" / "screen-05.png"
-slide_pic = s.shapes.add_picture(str(design), Inches(7.02), Inches(2.08), width=Inches(5.32))
-txt(s, "Clear fee · explicit total · direct Edit actions", 7.08, 5.12, 5.13, .35, 15, ORANGE, True)
-txt(s, "Prototype: kunalmahurkar.is-a.dev/amazon-checkout-prototype/", .85, 6.17, 11.6, .45, 17, INK)
-
-s = base("Priorities, measures and next test", 7, "P1 payment recovery is a risk hypothesis; no original failure was observed. P1 cost clarity is based on visible fee presentation, but comprehension is unmeasured. P2 covers editing and choice grouping. P3 covers click target polish. Five India-based desktop shoppers should try the simulated checkout. Track completion, abandonment, time, clicks, recovery and reported clarity. All baselines are not measured. Prototype and full case: https://kunalmahurkar.is-a.dev/case-amazon-checkout.html")
-txt(s, "Priority", .85, 1.33, 2.0, .38, 17, ORANGE, True)
-txt(s, "P1  Payment recovery + price clarity\nP2  Editing, choices and terminology\nP3  Primary control polish", .85, 1.85, 5.35, 2.10, 20)
-txt(s, "Five-participant validation plan", 6.70, 1.33, 5.55, .4, 19, ORANGE, True)
-txt(s, "Recruit India-based desktop shoppers with varied checkout familiarity. Ask them to change an address, inspect the payable total, select payment and recover from a simulated failure.", 6.70, 1.82, 5.55, 2.1, 19)
-box(s, .84, 4.27, 11.50, 1.72, WHITE, LINE, True)
-txt(s, "Success measures", 1.12, 4.49, 3.3, .42, 21, INK, True)
-txt(s, "Completion / abandonment · time and clicks · failure recovery · cost clarity · unaided task success", 1.12, 5.02, 10.65, .78, 18)
-txt(s, "Baseline not measured. No usability sessions have been conducted. Prototype: kunalmahurkar.is-a.dev/amazon-checkout-prototype/", .85, 6.27, 11.8, .61, 14, MUTED)
+s = slide("Next step: test the proposed improvements", 10,
+          "Priorities: cost comprehension and risk-led recovery first, then payment choice and editing, then target polish. Recruit five India-based desktop shoppers. Ask for the total and fee, a late edit, and recovery from a simulated failure. Measure unaided task completion, time, errors, missed clicks and confidence. No outcomes are claimed yet. Sources: original screenshots; Nielsen Norman Group heuristics; Interaction Design Foundation summaries of Hick's and Fitts's laws.",
+          "Priority reflects expert judgement. No usability sessions or outcome metrics have been measured.")
+point(s, "P1 · Total and fee", "Ask shoppers to state the amount payable and explain the COD fee before placing an order.", .77, 2.03, 5.51, .84)
+point(s, "P1 discovery · Failure recovery", "Use a controlled simulated failure. Check whether shoppers understand payment status and recover safely.", 6.82, 2.03, 5.44, .84)
+point(s, "P2 · Payment and editing", "Compare method comprehension and late-edit success without prompting.", .77, 3.64, 5.51, .80)
+point(s, "P3 · Pointer targets", "Measure target sizes and missed clicks during desktop tasks.", 6.82, 3.64, 5.44, .80)
+text(s, "Measures: correct total and fee, unaided task success, time, errors, recovery success, confidence.", .77, 5.38, 11.67, .59, 17, NAVY, True)
+text(s, "References: nngroup.com/articles/ten-usability-heuristics/ · interaction-design.org/literature/topics/hick-s-law · interaction-design.org/literature/topics/fitts-law", .77, 6.18, 11.7, .62, 10, MUTED)
 
 OUT.mkdir(exist_ok=True)
-prs.save(PPTX)
-print(PPTX)
+deck.save(PPTX)
+print(f"Saved {PPTX} ({len(deck.slides)} slides)")
 
+import win32com.client
+app = win32com.client.DispatchEx("PowerPoint.Application")
+presentation = app.Presentations.Open(str(PPTX), WithWindow=False)
 try:
-    import win32com.client
-    powerpoint = win32com.client.DispatchEx("PowerPoint.Application")
-    deck = powerpoint.Presentations.Open(str(PPTX), WithWindow=False)
-    try:
-        deck.SaveAs(str(PDF), 32)
-        print(PDF)
-    finally:
-        deck.Close()
-        powerpoint.Quit()
-except Exception as exc:
-    raise RuntimeError(f"PPTX saved; PowerPoint PDF export failed: {exc}") from exc
+    presentation.SaveAs(str(PDF), 32)
+    PREVIEWS.mkdir(exist_ok=True)
+    thumbs = []
+    for index, item in enumerate(presentation.Slides, 1):
+        path = PREVIEWS / f"slide-{index:02d}.png"
+        item.Export(str(path), "PNG", 1280, 720)
+        with Image.open(path) as opened:
+            thumbs.append(opened.convert("RGB").resize((512, 288)))
+finally:
+    presentation.Close()
+    app.Quit()
+
+sheet = Image.new("RGB", (512 * 2, 288 * 5), "#ffffff")
+for index, thumb in enumerate(thumbs):
+    sheet.paste(thumb, ((index % 2) * 512, (index // 2) * 288))
+sheet.save(PREVIEWS / "contact-sheet.png")
+print(f"Saved {PDF} and {len(thumbs)} slide previews")
