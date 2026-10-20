@@ -1,0 +1,7 @@
+# Penpot import package
+
+Nine `screen-XX.svg` files are generated from the native editable PowerPoint shapes and text with `python assignment/export_design_svg.py`. SVG rectangles and text remain separate vector/text elements for import into Penpot. The SVGs are proposed design concepts, not original Amazon screenshots.
+
+Suggested page order: Cart, Address, Delivery, Payment, Review, Processing, Payment failure, Recovery, Confirmation. Set each imported screen inside a 1280 × 720 board and add prototype links through Penpot's Prototype panel. Add the seven original screenshots from `evidence/` to a separate Current Experience page; protect personal details by using only the public crops. Verify text, fonts, and colors after import.
+
+The nine screen SVGs, seven public evidence crops, and eight reusable components have been imported into the live Penpot file. The component library shows eight components. The shareable view of the order-review board is https://design.penpot.app/#/view?file-id=664ad51a-32eb-816a-8008-d19fd77257b5&page-id=664ad51a-32eb-816a-8008-d19fd77257b6&section=interactions&index=0&share-id=a51d5e9d-af25-411d-9e5c-e377bd79ab96 . To edit the design, open the owner workspace file at https://design.penpot.app/#/workspace?team-id=664ad51a-32eb-816a-8008-d19f54580de0&file-id=664ad51a-32eb-816a-8008-d19fd77257b5&page-id=664ad51a-32eb-816a-8008-d19fd77257b6 . Penpot screen-to-screen prototype connections have not been built; use the separately published React prototype for the interactive flow.

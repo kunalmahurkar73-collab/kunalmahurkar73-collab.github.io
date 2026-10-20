@@ -5,13 +5,12 @@ The PDF is exported from the PPTX by Microsoft PowerPoint on Windows.
 """
 
 from pathlib import Path
-import time
 
 from PIL import Image
 from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_SHAPE
-from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from pptx.enum.text import PP_ALIGN
 from pptx.util import Inches, Pt
 
 
@@ -66,7 +65,8 @@ def txt(slide, text, x, y, w, h, size=18, color=INK, bold=False, align=None):
 
 
 def pic(slide, name, x, y, w, max_h):
-    path = ROOT / "evidence" / name
+    cleaned = ROOT / "evidence" / "clean" / Path(name).with_suffix(".png")
+    path = cleaned if cleaned.exists() else ROOT / "evidence" / name
     with Image.open(path) as im:
         ratio = im.height / im.width
     h = min(max_h, w * ratio)
@@ -110,7 +110,7 @@ for i, (num, head, detail) in enumerate(stages):
     txt(s, head, 6.55, y + .10, 2.15, .42, 19, INK, True)
     txt(s, detail, 8.73, y + .17, 3.24, .3, 14, MUTED)
 
-s = base("Observed current experience", 3, "Original screenshots: evidence/cart-item.jpg, evidence/payment-methods.jpg, evidence/review-total.jpg, evidence/order-confirmation.jpg and evidence/cancellation-success.jpg. All were captured from the signed-in desktop web flow on 20 October 2026. Public crops exclude personal account information. Screenshot evidence establishes visible states, not participant friction.")
+s = base("Observed current experience", 3, "Original screenshots: evidence/cart-item.jpg, evidence/payment-methods.jpg, evidence/review-total.jpg, evidence/order-confirmation.jpg and evidence/cancellation-success.jpg. All were captured from the signed-in desktop web flow on 20 October 2026. Public crops exclude personal account information. Display copies of payment, review and cancellation remove cursor artifacts only; originals remain in the evidence folder. Screenshot evidence establishes visible states, not participant friction.")
 pic(s, "cart-item.jpg", .82, 1.22, 5.15, 2.42)
 txt(s, "Cart: item, quantity, coupon and delivery promise", .84, 3.62, 5.0, .6, 15, MUTED)
 pic(s, "payment-methods.jpg", 6.61, 1.22, 2.46, 2.18)
@@ -167,11 +167,9 @@ pic(s, "review-total.jpg", 1.06, 2.20, 5.12, 1.56)
 txt(s, "The ₹7 COD fee and ₹214 final total are visible. Whether shoppers notice the fee is untested.", 1.08, 4.36, 4.95, 1.05, 18, MUTED)
 txt(s, "AFTER  ·  proposed design concept", 6.90, 1.31, 5.52, .4, 16, ORANGE, True)
 box(s, 6.86, 1.78, 5.65, 3.88, WHITE, LINE, True)
-txt(s, "Review your order", 7.18, 2.04, 4.9, .52, 24, INK, True)
-txt(s, "Item                                      ₹207\nDelivery                                FREE\nCash on delivery fee                 ₹7", 7.18, 2.73, 4.94, 1.42, 18)
-box(s, 7.15, 4.21, 4.92, .016, LINE)
-txt(s, "Total payable                         ₹214", 7.18, 4.36, 4.94, .4, 20, INK, True)
-txt(s, "Edit address   ·   Edit payment   ·   Retry safely", 7.18, 4.97, 4.98, .35, 15, ORANGE, True)
+design = OUT / "design-previews" / "screen-05.png"
+slide_pic = s.shapes.add_picture(str(design), Inches(7.02), Inches(2.08), width=Inches(5.32))
+txt(s, "Clear fee · explicit total · direct Edit actions", 7.08, 5.12, 5.13, .35, 15, ORANGE, True)
 txt(s, "Prototype: kunalmahurkar.is-a.dev/amazon-checkout-prototype/", .85, 6.17, 11.6, .45, 17, INK)
 
 s = base("Priorities, measures and next test", 7, "P1 payment recovery is a risk hypothesis; no original failure was observed. P1 cost clarity is based on visible fee presentation, but comprehension is unmeasured. P2 covers editing and choice grouping. P3 covers click target polish. Five India-based desktop shoppers should try the simulated checkout. Track completion, abandonment, time, clicks, recovery and reported clarity. All baselines are not measured. Prototype and full case: https://kunalmahurkar.is-a.dev/case-amazon-checkout.html")
