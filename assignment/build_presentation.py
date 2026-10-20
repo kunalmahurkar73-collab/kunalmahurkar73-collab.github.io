@@ -9,8 +9,8 @@ from pptx.util import Inches, Pt
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assignment"
-PPTX = OUT / "amazon-india-web-checkout-ux-evaluation.pptx"
-PDF = OUT / "amazon-india-web-checkout-ux-evaluation.pdf"
+PPTX = OUT / "amazon-india-web-checkout-ux-evaluation-7-slides.pptx"
+PDF = OUT / "amazon-india-web-checkout-ux-evaluation-7-slides.pdf"
 PREVIEWS = OUT / "slide-previews"
 NAVY = RGBColor(19, 25, 33)
 INK = RGBColor(15, 17, 17)
@@ -66,6 +66,7 @@ def design(number):
 
 def slide(title, number, note, subtitle=None):
     item = deck.slides.add_slide(deck.slide_layouts[6])
+    number = len(deck.slides)
     item.background.fill.solid()
     item.background.fill.fore_color.rgb = PAPER
     text(item, f"{number:02d}  AMAZON INDIA CHECKOUT", .62, .27, 5.4, .28, 10, TEAL, True)
@@ -73,7 +74,7 @@ def slide(title, number, note, subtitle=None):
     if subtitle:
         text(item, subtitle, .64, 1.40, 12.0, .48, 15, MUTED)
     text(item, "Kunal Mahurkar · Independent UX evaluation · 20 Oct 2026", .62, 7.16, 10.5, .18, 9, MUTED)
-    text(item, f"{number:02d} / 10", 11.92, 7.15, .77, .18, 9, MUTED, align=PP_ALIGN.RIGHT)
+    text(item, f"{number:02d} / 07", 11.92, 7.15, .77, .18, 9, MUTED, align=PP_ALIGN.RIGHT)
     item.notes_slide.notes_text_frame.text = note
     return item
 
@@ -89,7 +90,7 @@ def point(item, heading, body, x, y, w, body_h=.75):
 
 s = slide("What the checkout shows, and what I changed", 1,
           "I observed one Amazon India desktop checkout, placed a cash-on-delivery order and cancelled it. This deck separates visible facts from usability hypotheses and shows the redesign response.",
-          "A single desktop journey, six heuristic questions, and nine proposed screens")
+          "One checkout journey ? six heuristic concerns ? three UX laws")
 text(s, "REAL INTERFACE", .75, 2.08, 3.7, .32, 13, TEAL, True)
 text(s, "Seven public screenshot crops from one checkout and cancellation", .75, 2.52, 4.25, 1.12, 23, NAVY, True)
 text(s, "REDESIGN", .75, 4.25, 3.7, .32, 13, AMBER, True)
@@ -143,26 +144,6 @@ image(s, design(1), 6.78, 2.31, 5.62, 2.85)
 point(s, "Hypothesis: competing decisions", "Promotion content and quantity control share the cart view. Decision effort has not been timed.", .78, 5.45, 5.48, .75)
 point(s, "Change: clearer action hierarchy", "Keep quantity and continue actions prominent, with larger consistent click areas.", 6.89, 5.45, 5.46, .75)
 
-s = slide("04  Editing should preserve the journey", 6,
-          "Change links were observed during review, so I do not claim Amazon lacks editing. The public review crop retains cost information rather than the address rows. The redesign presents direct Edit actions and keeps selections. Nielsen's user control and freedom, Jakob's Law and Fitts's Law inform this concept.",
-          "Nielsen #3 and #7 · Jakob's Law: familiar editing · Fitts's Law: target size")
-image(s, design(5), .74, 1.96, 7.00, 3.94)
-label(s, "What was observed", 8.05, 2.07, 4.36)
-text(s, "The review flow offered Change links. The public crop does not show those controls or prove rework.", 8.05, 2.46, 4.30, 1.10, 17)
-label(s, "What I changed", 8.05, 4.05, 4.36, AMBER)
-text(s, "Each decision has a direct Edit action. The interactive prototype keeps previous selections after editing.", 8.05, 4.44, 4.30, 1.12, 17)
-text(s, "Test: change address and payment from review; record wrong turns and retained state.", .78, 6.47, 11.6, .40, 15, TEAL, True)
-
-s = slide("05  Failure recovery is a design scenario", 7,
-          "The observed order succeeded and was later cancelled. There is no real payment-failure capture. Nielsen's error recovery heuristic identifies a high-risk scenario to test, not an established Amazon defect. The concept states that no payment was taken and offers retry or method change.",
-          "Nielsen #9: help users recognize, diagnose, and recover from errors")
-label(s, "Observed outcome · EV-06", .76, 2.02, 4.10)
-image(s, evidence("order-confirmation.jpg"), .74, 2.43, 4.45, 1.27)
-text(s, "The observed order succeeded. No failure screen was captured.", .77, 4.02, 4.26, .86, 17)
-label(s, "Proposed failure state", 5.47, 2.02, 6.90, AMBER)
-image(s, design(7), 5.42, 2.43, 7.00, 3.88)
-text(s, "The concept makes transaction status explicit and offers safe recovery.", .78, 6.58, 11.58, .36, 15, TEAL, True)
-
 s = slide("Heuristic map: observation, risk, response", 8,
           "The six rows summarize which Nielsen heuristic is relevant. None is presented as a verified user harm. Five observations come from the real journey; payment failure is a proposed scenario. Severity is expert judgement and must be checked through user testing.",
           "A heuristic concern is an expert assessment. A user impact requires a user study.")
@@ -196,16 +177,7 @@ for row in range(7):
             paragraph.font.size = Pt(12 if row else 13)
             paragraph.font.bold = row == 0 or col == 0
             paragraph.font.color.rgb = WHITE if row == 0 else INK
-text(s, "No measured conversion, error, time, or satisfaction baseline is available.", .70, 6.42, 11.85, .34, 14, AMBER, True)
-
-s = slide("The new design makes decisions more explicit", 9,
-          "Three proposed screens show the design response. Payment exposes method-specific cost, review keeps an itemized total and direct edits, and failure communicates transaction status with recovery options. They are editable concepts; the React prototype demonstrates behavior.",
-          "Nine editable screens in Penpot and PowerPoint. A separate React prototype demonstrates the flow.")
-for x, number, title, caption in ((.73, 4, "Payment", "Fee shown with the method"), (4.75, 5, "Review", "Total and edits together"), (8.78, 7, "Failure", "Status plus recovery")):
-    image(s, design(number), x, 2.06, 3.78, 2.42)
-    text(s, title, x, 4.76, 3.69, .40, 20, NAVY, True)
-    text(s, caption, x, 5.22, 3.66, .67, 15, MUTED)
-text(s, "Prototype: kunalmahurkar.is-a.dev/amazon-checkout-prototype/", .76, 6.52, 11.83, .31, 15, TEAL, True)
+text(s, "Hick: group choices ? Fitts: enlarge targets ? Jakob: familiar edits. All impacts await testing.", .70, 6.42, 11.85, .34, 14, AMBER, True)
 
 s = slide("Next step: test the proposed improvements", 10,
           "Priorities: cost comprehension and risk-led recovery first, then payment choice and editing, then target polish. Recruit five India-based desktop shoppers. Ask for the total and fee, a late edit, and recovery from a simulated failure. Measure unaided task completion, time, errors, missed clicks and confidence. No outcomes are claimed yet. Sources: original screenshots; Nielsen Norman Group heuristics; Interaction Design Foundation summaries of Hick's and Fitts's laws.",
@@ -237,8 +209,11 @@ finally:
     presentation.Close()
     app.Quit()
 
-sheet = Image.new("RGB", (512 * 2, 288 * 5), "#ffffff")
+sheet = Image.new("RGB", (512 * 2, 288 * 4), "#ffffff")
 for index, thumb in enumerate(thumbs):
     sheet.paste(thumb, ((index % 2) * 512, (index // 2) * 288))
 sheet.save(PREVIEWS / "contact-sheet.png")
+for stale in PREVIEWS.glob("slide-*.png"):
+    if int(stale.stem.rsplit("-", 1)[1]) > len(thumbs):
+        stale.unlink()
 print(f"Saved {PDF} and {len(thumbs)} slide previews")
