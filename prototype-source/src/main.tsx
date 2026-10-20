@@ -1,0 +1,59 @@
+import React, {useEffect, useState} from 'react';
+import {createRoot} from 'react-dom/client';
+import {motion} from 'motion/react';
+import {ArrowLeft, ArrowRight, Check, CircleHelp, CreditCard, MapPin, Minus, Plus, RotateCcw, ShieldCheck, ShoppingBag, Truck, Wallet} from 'lucide-react';
+import './style.css';
+
+type Step='cart'|'address'|'delivery'|'payment'|'review'|'processing'|'success'|'failure';
+type Method='UPI'|'Card'|'Cash on delivery';
+type Data={step:Step; quantity:number; address:string; delivery:'Fastest'|'Amazon Day'; method:Method; error:string};
+const KEY='checkout-lab-v1';
+const defaults:Data={step:'cart',quantity:1,address:'Home',delivery:'Fastest',method:'UPI',error:''};
+const steps:Step[]=['cart','address','delivery','payment','review'];
+const labels:Record<Step,string>={cart:'Cart',address:'Address',delivery:'Delivery',payment:'Payment',review:'Review',processing:'Processing',success:'Confirmed',failure:'Try again'};
+const price=207;
+function load():Data{try{const value=localStorage.getItem(KEY);if(!value)return defaults;const raw=JSON.parse(value);if(!raw||!steps.concat(['processing','success','failure']).includes(raw.step)||!Number.isInteger(raw.quantity)||raw.quantity<0||raw.quantity>9)return defaults;return {...defaults,...raw,step:raw.step==='processing'?'review':raw.step}}catch{return defaults}}
+function App(){
+  const [data,setData]=useState<Data>(load);
+  const [storageNote,setStorageNote]=useState('');
+  const [connection,setConnection]=useState(true);
+  const [busy,setBusy]=useState(false);
+  useEffect(()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch{setStorageNote('Progress is kept for this tab; browser storage is unavailable.')}},[data]);
+  useEffect(()=>{const online=()=>setConnection(navigator.onLine);window.addEventListener('online',online);window.addEventListener('offline',online);return()=>{window.removeEventListener('online',online);window.removeEventListener('offline',online)}},[]);
+  const change=(patch:Partial<Data>)=>setData(prev=>({...prev,...patch,error:''}));
+  const subtotal=data.quantity*price;
+  const fee=data.method==='Cash on delivery'&&data.quantity>0?7:0;
+  const total=subtotal+fee;
+  const reset=()=>{setData(defaults);try{localStorage.removeItem(KEY)}catch{}};
+  const next=()=>{
+    if(data.step==='cart'&&data.quantity===0){change({error:'Add an item to continue.'});return}
+    if(data.step==='address'&&!data.address){change({error:'Choose a sample address to continue.'});return}
+    const i=steps.indexOf(data.step);if(i<4)change({step:steps[i+1]});
+  };
+  const back=()=>{const i=steps.indexOf(data.step);if(i>0)change({step:steps[i-1]});else if(data.step==='failure')change({step:'payment'});else if(data.step==='success')reset()};
+  const submit=()=>{if(busy)return;if(!connection){change({error:'You appear to be offline. Reconnect and try the simulated order again.'});return}setBusy(true);change({step:'processing'});setTimeout(()=>{setBusy(false);setData(prev=>({...prev,step:'success'}))},650)};
+  const fail=()=>{if(busy)return;change({step:'failure'})};
+  return <>
+    <header className="sitebar"><a className="brand" href="../case-amazon-checkout.html" aria-label="Back to Amazon checkout case study"><span className="brand-mark">KM.</span><span>Checkout Lab <small>UX redesign concept</small></span></a><a className="backlink" href="../case-amazon-checkout.html"><ArrowLeft size={16}/> Case study</a></header>
+    <main className="layout">
+      <aside className="intro"><p className="eyebrow">INTERACTIVE PROTOTYPE / 01</p><h1>A calmer way<br/>to <em>check out.</em></h1><p className="lead">Explore a proposed desktop checkout flow built around clear choices, visible costs and easy edits.</p><div className="disclaimer"><ShieldCheck size={20}/><span>This is a safe simulation. No real Amazon account, address or payment is used.</span></div><div className="guide"><h2>What to try</h2><ol><li>Change quantity and see the total update.</li><li>Choose a sample address and delivery day.</li><li>Switch payment methods and review fees.</li><li>Try success or the simulated failure path.</li></ol></div><a className="evidence-link" href="../case-amazon-checkout.html#evidence">See original screenshot evidence <ArrowRight size={15}/></a></aside>
+      <section className="workspace" aria-label="Checkout simulation"><div className="workspace-head"><div><p className="eyebrow">SIMULATED CHECKOUT</p><h2>{labels[data.step]}</h2></div><button className="reset" onClick={reset}><RotateCcw size={16}/> Reset demo</button></div>
+        <nav className="progress" aria-label="Checkout progress">{steps.map((s,i)=><button key={s} className={'progress-step '+((steps.indexOf(data.step)>i||data.step==='success')?'done ':'')+(data.step===s?'active':'')} onClick={()=>{if(data.step!=='processing')change({step:s})}} aria-current={data.step===s?'step':undefined}><span>{steps.indexOf(data.step)>i||data.step==='success'?<Check size={13}/>:i+1}</span><b>{labels[s]}</b></button>)}</nav>
+        <motion.div key={data.step} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:.22}} className="screen">
+          {data.step==='cart'&&<><div className="section-title"><ShoppingBag size={22}/><div><h3>Your bag</h3><p>One sample product. Edit the quantity to explore pricing.</p></div></div>{data.quantity===0?<div className="empty"><ShoppingBag size={35}/><h3>Your bag is empty</h3><p>Add the sample book to continue the demo.</p><button className="primary" onClick={()=>change({quantity:1})}>Add DIP</button></div>:<div className="product"><div className="cover"><small>SETH GODIN</small><strong>dip</strong><span>Paperback</span></div><div className="product-details"><h4>DIP</h4><p>Seth Godin · Paperback</p><span className="stock">In stock · Demo item</span><div className="quantity" aria-label="Quantity"><button aria-label="Decrease quantity" onClick={()=>change({quantity:Math.max(0,data.quantity-1)})}><Minus size={17}/></button><output>{data.quantity}</output><button aria-label="Increase quantity" disabled={data.quantity>=9} onClick={()=>change({quantity:data.quantity+1})}><Plus size={17}/></button></div></div><b className="product-price">₹{subtotal}</b></div>}<div className="hint"><CircleHelp size={17}/> The original website’s screenshots are in the case study. This screen is a redesign concept.</div></>}
+          {data.step==='address'&&<><div className="section-title"><MapPin size={22}/><div><h3>Where should it go?</h3><p>Choose a fictional sample address. No personal data is collected.</p></div></div><div className="options">{[['Home','Demo Lane, Pune · 411001'],['Office','Sample Tech Park, Pune · 411045']].map(([name,detail])=><button key={name} className={'option '+(data.address===name?'selected':'')} onClick={()=>change({address:name})} aria-pressed={data.address===name}><span className="radio"/><span><b>{name}</b><small>{detail}</small></span>{data.address===name&&<Check size={17}/>}</button>)}</div><button className="text-action" onClick={()=>change({address:''})}>Clear selection to test validation</button></>}
+          {data.step==='delivery'&&<><div className="section-title"><Truck size={23}/><div><h3>Choose delivery</h3><p>Compare dates and price before moving on.</p></div></div><div className="options">{[['Fastest','Thursday, 22 Oct','As soon as possible'],['Amazon Day','Friday, 23 Oct','Grouped delivery · lower carbon']].map(([name,date,note])=><button key={name} className={'option '+(data.delivery===name?'selected':'')} onClick={()=>change({delivery:name as Data['delivery']})} aria-pressed={data.delivery===name}><span className="radio"/><span><b>{name}</b><small>{date} · {note}</small></span><strong>FREE</strong></button>)}</div></>}
+          {data.step==='payment'&&<><div className="section-title"><Wallet size={22}/><div><h3>How would you pay?</h3><p>Choose a simulated method. Do not enter real payment details.</p></div></div><div className="options">{(['UPI','Card','Cash on delivery'] as Method[]).map(name=><button key={name} className={'option '+(data.method===name?'selected':'')} onClick={()=>change({method:name})} aria-pressed={data.method===name}><span className="radio"/><span><b>{name}</b><small>{name==='UPI'?'Simulated UPI payment':name==='Card'?'Simulated card payment — no card number needed':'Pay when delivered · ₹7 convenience fee'}</small></span>{name==='Card'?<CreditCard size={20}/>:data.method===name?<Check size={18}/>:null}</button>)}</div><div className="hint"><ShieldCheck size={17}/> No payment will be processed. The failure button on Review demonstrates a recovery state.</div></>}
+          {data.step==='review'&&<><div className="section-title"><ShieldCheck size={22}/><div><h3>Review before placing</h3><p>Everything important is visible in one place.</p></div></div><div className="review-list"><div><span>Item</span><b>DIP × {data.quantity}</b><button onClick={()=>change({step:'cart'})}>Edit</button></div><div><span>Deliver to</span><b>{data.address} · sample address</b><button onClick={()=>change({step:'address'})}>Edit</button></div><div><span>Delivery</span><b>{data.delivery} · FREE</b><button onClick={()=>change({step:'delivery'})}>Edit</button></div><div><span>Payment</span><b>{data.method}</b><button onClick={()=>change({step:'payment'})}>Edit</button></div></div><div className="hint"><CircleHelp size={17}/> Use “Simulate failure” to inspect the proposed recovery experience.</div></>}
+          {data.step==='processing'&&<div className="result"><div className="spinner"/><h3>Processing your demo order</h3><p>This is a local simulation. No payment or order is sent.</p></div>}
+          {data.step==='success'&&<div className="result"><div className="result-icon"><Check size={30}/></div><p className="eyebrow">DEMO ORDER / CONFIRMED</p><h3>Your simulated order is confirmed</h3><p>DIP × {data.quantity} · {data.delivery} · {data.method}</p><p className="demo-id">Demo reference: LOCAL-2026 (not an Amazon order)</p><button className="primary" onClick={reset}>Start fresh <ArrowRight size={17}/></button></div>}
+          {data.step==='failure'&&<div className="result failure"><div className="failure-mark">!</div><p className="eyebrow">SIMULATED FAILURE</p><h3>Payment was not taken</h3><p>Your selection is saved. Retry safely or choose another method. No real transaction occurred.</p><div className="result-actions"><button className="primary" onClick={()=>change({step:'review'})}>Retry from review</button><button className="secondary" onClick={()=>change({step:'payment'})}>Change method</button></div></div>}
+        </motion.div>
+        {storageNote&&<p className="status" role="status">{storageNote}</p>}{data.error&&<p className="error" role="alert">{data.error}</p>}
+        {steps.includes(data.step)&&<><div className="summary"><div><span>Items</span><b>₹{subtotal}</b></div><div><span>Delivery</span><b>FREE</b></div><div><span>Payment fee</span><b>₹{fee}</b></div><div className="summary-total"><span>Final total</span><strong>₹{total}</strong></div></div><div className="footer-actions">{data.step!=='cart'&&<button className="secondary" onClick={back}><ArrowLeft size={16}/> Back</button>}{data.step==='review'?<div className="submit-actions"><button className="secondary" onClick={fail}>Simulate failure</button><button className="primary" onClick={submit} disabled={busy||data.quantity===0}>Place simulated order <ArrowRight size={17}/></button></div>:<button className="primary" onClick={next}>Continue <ArrowRight size={17}/></button>}</div></>}
+      </section>
+    </main><footer className="site-footer">Independent educational UX case study. Not affiliated with or endorsed by Amazon. <a href="../case-amazon-checkout.html">Read the research and evidence</a>.</footer>
+  </>
+}
+
+createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
