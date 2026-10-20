@@ -6,7 +6,10 @@
     const url=links[key];
     const el=document.createElement(url?'a':'span');
     el.textContent=url?label:`${label} — coming soon`;
-    if(url){el.href=url;el.rel='noopener noreferrer';el.target='_blank';}
+    if(url){
+      el.href=url;
+      if(new URL(url,location.href).origin!==location.origin){el.rel='noopener noreferrer';el.target='_blank';}
+    }
     container.append(el);
   }
 })();
