@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="940" viewBox="0 0 1280 940" role="img" aria-labelledby="title desc">
+<title id="title">Airbnb India: four MVP user flows</title>
+<desc id="desc">Four conceptual flows with four connected states each. All bookings, invitations, property performance and experience purchases are simulations. This diagram documents prototype journeys, not screenshots or production architecture.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#C9344B"/></marker></defs>
+<rect width="1280" height="940" fill="white"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#222">
+<text x="55" y="62" font-size="18" fill="#C9344B">INDEPENDENT CASE STUDY / PROPOSED USER JOURNEYS</text>
+<text x="55" y="112" font-size="36" font-weight="700">Four MVPs. Sixteen meaningful states.</text>
+<text x="55" y="149" font-size="18">Kunal Mahurkar · All flows use fictional inventory and simulated completion.</text>
+<text x="55" y="213" font-size="23" font-weight="700">Group Decision Room</text>
+<text x="55" y="248" font-size="17">Organizer’s job: reach an explicit shared stay decision.</text>
+<text x="55" y="380" font-size="23" font-weight="700">Repeat Travel Engine</text>
+<text x="55" y="415" font-size="17">Returning group’s job: reuse useful constraints while keeping them editable.</text>
+<text x="55" y="547" font-size="23" font-weight="700">Host Growth Assistant</text>
+<text x="55" y="582" font-size="17">Host’s job: choose feasible improvements from explained aggregate requirements.</text>
+<text x="55" y="714" font-size="23" font-weight="700">Local Experience Bundles</text>
+<text x="55" y="749" font-size="17">Traveller’s job: add relevant optional activities with transparent costs.</text>
+</g>
+<g fill="#FFF7F8" stroke="#C9344B" stroke-width="1.5">
+<rect x="55" y="272" width="260" height="58" rx="8"/><rect x="355" y="272" width="260" height="58" rx="8"/><rect x="655" y="272" width="260" height="58" rx="8"/><rect x="955" y="272" width="270" height="58" rx="8"/>
+<rect x="55" y="439" width="260" height="58" rx="8"/><rect x="355" y="439" width="260" height="58" rx="8"/><rect x="655" y="439" width="260" height="58" rx="8"/><rect x="955" y="439" width="270" height="58" rx="8"/>
+<rect x="55" y="606" width="260" height="58" rx="8"/><rect x="355" y="606" width="260" height="58" rx="8"/><rect x="655" y="606" width="260" height="58" rx="8"/><rect x="955" y="606" width="270" height="58" rx="8"/>
+<rect x="55" y="773" width="260" height="58" rx="8"/><rect x="355" y="773" width="260" height="58" rx="8"/><rect x="655" y="773" width="260" height="58" rx="8"/><rect x="955" y="773" width="270" height="58" rx="8"/>
+</g>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="17" text-anchor="middle" fill="#222">
+<text x="185" y="307">Trip details</text><text x="485" y="307">Member constraints</text><text x="785" y="307">Compare properties</text><text x="1090" y="307">Decision and simulation</text>
+<text x="185" y="474">Previous trips</text><text x="485" y="474">Reuse group preferences</text><text x="785" y="474">Explained suggestions</text><text x="1090" y="474">Simulated rebooking</text>
+<text x="185" y="641">Sample performance</text><text x="485" y="641">Readiness and needs</text><text x="785" y="641">Suggested improvements</text><text x="1090" y="641">Checklist and score</text>
+<text x="185" y="808">Sample stay summary</text><text x="485" y="808">Discover optional activities</text><text x="785" y="808">Choose and price</text><text x="1090" y="808">Itinerary and simulation</text>
+</g>
+<g stroke="#C9344B" stroke-width="2" marker-end="url(#arrow)">
+<path d="M320 301H348 M620 301H648 M920 301H948 M320 468H348 M620 468H648 M920 468H948 M320 635H348 M620 635H648 M920 635H948 M320 802H348 M620 802H648 M920 802H948"/>
+</g>
+<text x="55" y="891" font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#555">Conceptual flow diagram. Reset returns each prototype to its starting state. No messages, payments or bookings are sent.</text>
+</svg>
