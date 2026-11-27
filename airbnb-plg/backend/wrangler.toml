@@ -1,0 +1,8 @@
+name = "airbnb-india-research"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+[vars]
+ALLOWED_ORIGINS = "https://kunalmahurkar.is-a.dev"
+TURNSTILE_HOSTNAME = "kunalmahurkar.is-a.dev"
+# Add SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, TURNSTILE_SECRET,
+# RATE_HASH_SECRET using Cloudflare encrypted secrets, never this file.

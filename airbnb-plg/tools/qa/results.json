@@ -1,0 +1,18 @@
+{
+  "browser": "Installed Chrome via Playwright",
+  "results": [
+    "Dashboard filter count 100→35, synthetic/real isolation and empty state",
+    "Financial base and zero-uplift calculations; RICE recalculation",
+    "Group four-screen workflow, invalid dates, invitations, selection, booking simulation and budget conflict block",
+    "Repeat four-screen workflow, consent, rule-based matching, companion invitation and rebooking simulation",
+    "Host four-screen workflow, checklist scoring and recommendation completion without occupancy uplift claim",
+    "Experiences four-screen workflow, item quantity/total and optional zero-purchase completion",
+    "Responsive overflow checks and screenshots at 390, 768, 1440px",
+    "Survey required consent, traveller/host branching and unconfigured submission disabled",
+    "Homepage five project links and existing chatbot open",
+    "All 15 manifest download targets HTTP 200",
+    "No uncaught page errors or broken same-origin resources during tested workflows"
+  ],
+  "errors": [],
+  "broken": []
+}

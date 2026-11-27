@@ -1,0 +1,13 @@
+{
+  "browser": "Microsoft Edge",
+  "results": [
+    {
+      "route": "/airbnb-plg/",
+      "violations": []
+    },
+    {
+      "route": "/airbnb-plg/survey.html",
+      "violations": []
+    }
+  ]
+}
