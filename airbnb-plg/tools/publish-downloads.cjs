@@ -1,0 +1,1 @@
+const fs=require('fs'),path=require('path');const root=path.resolve(__dirname,'..'),dir=path.join(root,'downloads');const allowed=['airbnb-india-case-study.pdf','airbnb-india-executive.pptx'];fs.writeFileSync(path.join(dir,'manifest.json'),JSON.stringify(allowed.filter(f=>fs.existsSync(path.join(dir,f))),null,2)+'\n');

@@ -1,94 +1,527 @@
-/* Verified secondary evidence and explicitly provisional strategy. Reviewed 27 November 2026. */
 window.RESEARCH_CONTENT = {
-  reviewed: '27 November 2026',
-  disclosure: 'This independent product management case study currently uses publicly available secondary research and a clearly labelled synthetic customer dataset to demonstrate research analysis, hypothesis formation, feature prioritization and MVP design. Primary customer research has not been conducted for this version. Synthetic responses are not actual participant responses and are excluded from verified research findings. Product recommendations will be reassessed as genuine customer and host feedback becomes available.',
-  sources: [
-    {id:'S1',title:'India Tourism Data Compendium 2025',url:'https://data.tourism.gov.in/mrd/Uploads/tourism_data/India%20Tourism%20Data%20Compendium%202025_1.pdf',date:'2025 edition; statistics for 2024',claim:'The Ministry reports 2,948.19 million domestic tourist visits during 2024.',limitations:'Visits are not unique people, paid accommodation stays, Airbnb bookings or a serviceable market. This is a historical context point, not the latest 2026 estimate.'},
-    {id:'S2',title:'Airbnb 2024 Summer Release',url:'https://news.airbnb.com/airbnb-2024-summer-release',date:'1 May 2024',claim:'Shared wishlists, listing notes and voting, group messages and trip invitations were announced.',limitations:'Global product announcement; country and account availability can vary. These capabilities are existing foundations, not inventions of this case study.'},
-    {id:'S3',title:'Airbnb 2025 Summer Release',url:'https://news.airbnb.com/product-releases/airbnb-2025-summer-release',date:'13 May 2025',claim:'Airbnb introduced its redesigned app with homes, experiences and services.',limitations:'A product release does not establish India-wide inventory or willingness to pay. Experiences already exist.'},
-    {id:'S4',title:'Airbnb 2026 Summer Release',url:'https://news.airbnb.com/airbnb-2026-summer-release',date:'20 May 2026',claim:'Announced shared itineraries, AI wishlist comparison and connections/travel maps.',limitations:'Announced rollout dates and geographic limits matter. The concept must complement these tools rather than claim the category is missing.'},
-    {id:'S5',title:'Airbnb 2026 fall update',url:'https://news.airbnb.com/airbnb-2026-fall-update',date:'30 September 2026',claim:'Describes connections, wishlist comparison, and host tools including pricing and earnings insights.',limitations:'AI planning starts in the US; some host tools were announced for later in the fall. No India-wide availability claim is made.'},
-    {id:'S6',title:'Intergenerational travel gains momentum among young Indians',url:'https://news.airbnb.com/en-in/intergenerational-travel-gains-momentum-among-young-indians',date:'5 November 2026',claim:'Airbnb reports research on intergenerational travel and its India-origin large-group search activity.',limitations:'Company-sponsored YouGov online survey: 2,012 urban Indians aged 18–45 in NCCS A households, ten cities, fielded 28 September–7 October 2026. It does not represent all Indian travellers. Searches are not bookings.'},
-    {id:'S7',title:'Airbnb 2025 Form 10-K',url:'https://www.sec.gov/Archives/edgar/data/1559720/000155972026000004/abnb-20251231.htm',date:'Filed 12 February 2026; year ended 31 December 2025',claim:'Defines platform operating measures and discusses competition, seasonality, regulation and marketplace risks.',limitations:'Global company reporting does not provide the India group-trip baseline assumed in this model. Reported GBV includes components beyond host earnings.'},
-    {id:'S8',title:'MakeMyTrip Villas & Homestays',url:'https://www.makemytrip.com/homestays/',date:'Undated live page; reviewed 27 November 2026',claim:'Visible destination, dates and guest search for villas and homestays alongside its wider travel navigation.',limitations:'Desktop public-page review only; no logged-in flow or completed booking tested.'},
-    {id:'S9',title:'Booking.com villas in India',url:'https://www.booking.com/villas/country/in.html',date:'Undated live page; reviewed 27 November 2026',claim:'Public villa inventory discovery with dates, occupancy, guest ratings and property information.',limitations:'Inventory, prices and availability change. This is a capability observation, not a price or conversion comparison.'},
-    {id:'S10',title:'Agoda India / Agoda Homes',url:'https://www.agoda.com/en-in/',date:'Undated live page; reviewed 27 November 2026',claim:'The public search index identifies Agoda Homes in its India-facing site.',limitations:'Dynamic page did not expose a readable booking flow in this research environment. Detailed group capability assessment remains unverified.'},
-    {id:'S11',title:'StayVista villas and vacation homes',url:'https://www.stayvista.com/',date:'Undated live page; reviewed 27 November 2026',claim:'Public collections include drive-to weekend getaways, family stays and corporate retreats.',limitations:'Company positioning and visible collections; no service-quality or property inspection performed.'},
-    {id:'S12',title:'SaffronStays villas and estates',url:'https://www.saffronstays.com/',date:'Undated live page; reviewed 27 November 2026',claim:'Public positioning includes private villas and large family celebration stays.',limitations:'Company claims and public browsing only, not independently measured hospitality quality.'},
-    {id:'S13',title:'Simplifying service fees on Airbnb',url:'https://www.airbnb.com/resources/hosting-homes/a/simplifying-service-fees-on-airbnb-771',date:'7 July 2026; updated 24 August 2026',claim:'Explains a single-fee transition, 15.5% example, applicable exceptions and tax considerations.',limitations:'The calculator uses an illustrative effective fee, not an assertion of universal India terms. Fees, tax treatment and booking subtotals vary.'}
+  "reviewed": "27 November 2026",
+  "disclosure": "This independent product management case study combines published secondary research, 20 cited public observations and a clearly labelled illustrative dataset. Public accounts are self-reported and have not been independently verified. Simulated records, prototypes and financial scenarios demonstrate hypotheses and do not establish customer prevalence or measured business outcomes.",
+  "sources": [
+    {
+      "id": "S1",
+      "title": "India Tourism Data Compendium 2025",
+      "url": "https://data.tourism.gov.in/mrd/Uploads/tourism_data/India%20Tourism%20Data%20Compendium%202025_1.pdf",
+      "date": "2025 edition; statistics for 2024",
+      "claim": "The Ministry reports 2,948.19 million domestic tourist visits during 2024.",
+      "limitations": "Visits are not unique people, paid accommodation stays, Airbnb bookings or a serviceable market. This is a historical context point, not the latest 2026 estimate."
+    },
+    {
+      "id": "S2",
+      "title": "Airbnb 2024 Summer Release",
+      "url": "https://news.airbnb.com/airbnb-2024-summer-release",
+      "date": "1 May 2024",
+      "claim": "Shared wishlists, listing notes and voting, group messages and trip invitations were announced.",
+      "limitations": "Global product announcement; country and account availability can vary. These capabilities are existing foundations, not inventions of this case study."
+    },
+    {
+      "id": "S3",
+      "title": "Airbnb 2025 Summer Release",
+      "url": "https://news.airbnb.com/product-releases/airbnb-2025-summer-release",
+      "date": "13 May 2025",
+      "claim": "Airbnb introduced its redesigned app with homes, experiences and services.",
+      "limitations": "A product release does not establish India-wide inventory or willingness to pay. Experiences already exist."
+    },
+    {
+      "id": "S4",
+      "title": "Airbnb 2026 Summer Release",
+      "url": "https://news.airbnb.com/airbnb-2026-summer-release",
+      "date": "20 May 2026",
+      "claim": "Announced shared itineraries, AI wishlist comparison and connections/travel maps.",
+      "limitations": "Announced rollout dates and geographic limits matter. The concept must complement these tools rather than claim the category is missing."
+    },
+    {
+      "id": "S5",
+      "title": "Airbnb 2026 fall update",
+      "url": "https://news.airbnb.com/airbnb-2026-fall-update",
+      "date": "30 September 2026",
+      "claim": "Describes connections, wishlist comparison, and host tools including pricing and earnings insights.",
+      "limitations": "AI planning starts in the US; some host tools were announced for later in the fall. No India-wide availability claim is made."
+    },
+    {
+      "id": "S6",
+      "title": "Intergenerational travel gains momentum among young Indians",
+      "url": "https://news.airbnb.com/en-in/intergenerational-travel-gains-momentum-among-young-indians",
+      "date": "5 November 2026",
+      "claim": "Airbnb reports research on intergenerational travel and its India-origin large-group search activity.",
+      "limitations": "Company-sponsored YouGov online study: 2,012 urban Indians aged 18–45 in NCCS A households, ten cities, fielded 28 September–7 October 2026. It does not represent all Indian travellers. Searches are not bookings."
+    },
+    {
+      "id": "S7",
+      "title": "Airbnb 2025 Form 10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972026000004/abnb-20251231.htm",
+      "date": "Filed 12 February 2026; year ended 31 December 2025",
+      "claim": "Defines platform operating measures and discusses competition, seasonality, regulation and marketplace risks.",
+      "limitations": "Global company reporting does not provide the India group-trip baseline assumed in this model. Reported GBV includes components beyond host earnings."
+    },
+    {
+      "id": "S8",
+      "title": "MakeMyTrip Villas & Homestays",
+      "url": "https://www.makemytrip.com/homestays/",
+      "date": "Undated live page; reviewed 27 November 2026",
+      "claim": "Visible destination, dates and guest search for villas and homestays alongside its wider travel navigation.",
+      "limitations": "Desktop public-page review only; no logged-in flow or completed booking tested."
+    },
+    {
+      "id": "S9",
+      "title": "Booking.com villas in India",
+      "url": "https://www.booking.com/villas/country/in.html",
+      "date": "Undated live page; reviewed 27 November 2026",
+      "claim": "Public villa inventory discovery with dates, occupancy, guest ratings and property information.",
+      "limitations": "Inventory, prices and availability change. This is a capability observation, not a price or conversion comparison."
+    },
+    {
+      "id": "S10",
+      "title": "Agoda India / Agoda Homes",
+      "url": "https://www.agoda.com/en-in/",
+      "date": "Undated live page; reviewed 27 November 2026",
+      "claim": "The public search index identifies Agoda Homes in its India-facing site.",
+      "limitations": "Dynamic page did not expose a readable booking flow in this research environment. Detailed group capability assessment remains unverified."
+    },
+    {
+      "id": "S11",
+      "title": "StayVista villas and vacation homes",
+      "url": "https://www.stayvista.com/",
+      "date": "Undated live page; reviewed 27 November 2026",
+      "claim": "Public collections include drive-to weekend getaways, family stays and corporate retreats.",
+      "limitations": "Company positioning and visible collections; no service-quality or property inspection performed."
+    },
+    {
+      "id": "S12",
+      "title": "SaffronStays villas and estates",
+      "url": "https://www.saffronstays.com/",
+      "date": "Undated live page; reviewed 27 November 2026",
+      "claim": "Public positioning includes private villas and large family celebration stays.",
+      "limitations": "Company claims and public browsing only, not independently measured hospitality quality."
+    },
+    {
+      "id": "S13",
+      "title": "Simplifying service fees on Airbnb",
+      "url": "https://www.airbnb.com/resources/hosting-homes/a/simplifying-service-fees-on-airbnb-771",
+      "date": "7 July 2026; updated 24 August 2026",
+      "claim": "Explains a single-fee transition, 15.5% example, applicable exceptions and tax considerations.",
+      "limitations": "The calculator uses an illustrative effective fee, not an assertion of universal India terms. Fees, tax treatment and booking subtotals vary."
+    }
   ],
-  competitors: [
-    {name:'Airbnb',observed:'Shared wishlists, group messaging, experiences, connections and announced comparison/host insights.',implication:'Build on collaboration foundations. Test explicit budget and availability reconciliation, consented reuse, and explainable group-readiness.',source:'S2–S5'},
-    {name:'MakeMyTrip',observed:'Villas & Homestays search within a broad travel service.',implication:'A credible domestic discovery alternative. Test total-trip planning needs rather than assume hotel-only demand.',source:'S8'},
-    {name:'Booking.com',observed:'India villa search, occupancy controls and guest-review information.',implication:'Compare perceived reliability and price comprehension in task-based research.',source:'S9'},
-    {name:'Agoda',observed:'Agoda Homes is surfaced publicly; detailed flow could not be verified.',implication:'Include in participant platform choices; complete a manual India flow audit before competitive conclusions.',source:'S10'},
-    {name:'StayVista',observed:'Curated villas, drive-to getaways, family collections and retreats.',implication:'Managed group stays compete on suitability and service certainty, not merely inventory size.',source:'S11'},
-    {name:'SaffronStays',observed:'Private villas and large family celebration positioning.',implication:'Research whether operational reassurance outweighs marketplace breadth for larger groups.',source:'S12'}
+  "competitors": [
+    {
+      "name": "Airbnb",
+      "observed": "Shared wishlists, group messaging, experiences, connections and announced comparison/host insights.",
+      "implication": "Build on collaboration foundations. Test explicit budget and availability reconciliation, consented reuse, and explainable group-readiness.",
+      "source": "S2–S5"
+    },
+    {
+      "name": "MakeMyTrip",
+      "observed": "Villas & Homestays search within a broad travel service.",
+      "implication": "A credible domestic discovery alternative. Test total-trip planning needs rather than assume hotel-only demand.",
+      "source": "S8"
+    },
+    {
+      "name": "Booking.com",
+      "observed": "India villa search, occupancy controls and guest-review information.",
+      "implication": "Compare perceived reliability and price comprehension in task-based research.",
+      "source": "S9"
+    },
+    {
+      "name": "Agoda",
+      "observed": "Agoda Homes is surfaced publicly; detailed flow could not be verified.",
+      "implication": "Include in participant platform choices; complete a manual India flow audit before competitive conclusions.",
+      "source": "S10"
+    },
+    {
+      "name": "StayVista",
+      "observed": "Curated villas, drive-to getaways, family collections and retreats.",
+      "implication": "Managed group stays compete on suitability and service certainty, not merely inventory size.",
+      "source": "S11"
+    },
+    {
+      "name": "SaffronStays",
+      "observed": "Private villas and large family celebration positioning.",
+      "implication": "Research whether operational reassurance outweighs marketplace breadth for larger groups.",
+      "source": "S12"
+    }
   ],
-  metrics: [
-    {name:'North Star: monthly completed domestic group stays',numerator:'Distinct completed reservation IDs at Indian properties, domestic origin and declared party size ≥3',denominator:'Not a rate; count once per reservation',period:'Calendar month of checkout; reconcile cancellation and fraud corrections',event:'stay_completed; reservation_id, checkout_at, property_country, origin_country, party_size; exclude tests'},
-    {name:'Group creation rate',numerator:'Eligible exposed organisers creating a valid room within 7 days',denominator:'Distinct eligible organisers exposed to the entry point',period:'Weekly exposure cohort +7 days',event:'group_entry_exposed → group_created, dedupe organiser_id'},
-    {name:'Invitation acceptance rate',numerator:'Unique invitees accepting a valid invitation within 7 days',denominator:'Unique delivered invitations to eligible invitees',period:'Invitation week +7 days',event:'invite_delivered → invite_accepted; exclude self-invites'},
-    {name:'Activated invited users',numerator:'Accepted invitees submitting availability and budget within 7 days',denominator:'Accepted invitees; also report absolute unique user count',period:'Acceptance cohort +7 days',event:'invite_accepted → participant_preferences_submitted'},
-    {name:'Group decision completion rate',numerator:'Created groups reaching an explicitly confirmed shared choice within 14 days',denominator:'Valid groups created with ≥2 participants',period:'Creation cohort +14 days',event:'group_created → group_decision_confirmed; count group_id once'},
-    {name:'Completed-stay conversion',numerator:'Randomised eligible groups with ≥1 completed stay by the defined outcome cutoff',denominator:'All randomised eligible groups, including unexposed/unused treatment assignments',period:'Pilot assignment cohort; 90-day completion window per group',event:'experiment_assigned → stay_completed; intention-to-treat'},
-    {name:'Booking conversion',numerator:'Randomised eligible groups confirming ≥1 booking within 30 days',denominator:'All randomised eligible groups',period:'Assignment cohort +30 days',event:'experiment_assigned → reservation_confirmed'},
-    {name:'90-day / 180-day repeat booking',numerator:'Index-stay organisers making another non-cancelled domestic booking within 90 / 180 days after index checkout',denominator:'Index-stay organisers with the full 90 / 180 days of observation',period:'Mature checkout cohorts only; publish alongside completed-repeat-stay outcome',event:'index_stay_completed → subsequent_reservation_confirmed; distinct reservations'},
-    {name:'Host readiness',numerator:'Pilot properties passing required group suitability checks with verified evidence',denominator:'All active eligible pilot properties assessed in the month',period:'Monthly snapshot, evidence refreshed after material listing changes',event:'readiness_assessment_completed; separate self-attested and verified checks'},
-    {name:'Experience attachment rate',numerator:'Eligible completed stay reservations with ≥1 completed optional experience',denominator:'Eligible completed stay reservations exposed to the experience offer',period:'Checkout month; experience must occur within trip dates',event:'experience_offer_exposed → experience_completed; join reservation_id'},
-    {name:'Incremental contribution margin',numerator:'Treatment minus scaled control platform revenue, less incremental variable delivery/support/refund costs',denominator:'Report currency total and per-randomised-group difference; no artificial ratio',period:'Mature pilot cohort; include refunds and reconciliation',event:'recognised_fee_revenue, refund_posted, variable_cost_posted; finance ledger source'}
+  "metrics": [
+    {
+      "name": "North Star: monthly completed domestic group stays",
+      "numerator": "Distinct completed reservation IDs at Indian properties, domestic origin and declared party size ≥3",
+      "denominator": "Not a rate; count once per reservation",
+      "period": "Calendar month of checkout; reconcile cancellation and fraud corrections",
+      "event": "stay_completed; reservation_id, checkout_at, property_country, origin_country, party_size; exclude tests"
+    },
+    {
+      "name": "Group creation rate",
+      "numerator": "Eligible exposed organisers creating a valid room within 7 days",
+      "denominator": "Distinct eligible organisers exposed to the entry point",
+      "period": "Weekly exposure cohort +7 days",
+      "event": "group_entry_exposed → group_created, dedupe organiser_id"
+    },
+    {
+      "name": "Invitation acceptance rate",
+      "numerator": "Unique invitees accepting a valid invitation within 7 days",
+      "denominator": "Unique delivered invitations to eligible invitees",
+      "period": "Invitation week +7 days",
+      "event": "invite_delivered → invite_accepted; exclude self-invites"
+    },
+    {
+      "name": "Activated invited users",
+      "numerator": "Accepted invitees submitting availability and budget within 7 days",
+      "denominator": "Accepted invitees; also report absolute unique user count",
+      "period": "Acceptance cohort +7 days",
+      "event": "invite_accepted → participant_preferences_submitted"
+    },
+    {
+      "name": "Group decision completion rate",
+      "numerator": "Created groups reaching an explicitly confirmed shared choice within 14 days",
+      "denominator": "Valid groups created with ≥2 participants",
+      "period": "Creation cohort +14 days",
+      "event": "group_created → group_decision_confirmed; count group_id once"
+    },
+    {
+      "name": "Completed-stay conversion",
+      "numerator": "Randomised eligible groups with ≥1 completed stay by the defined outcome cutoff",
+      "denominator": "All randomised eligible groups, including unexposed/unused treatment assignments",
+      "period": "Pilot assignment cohort; 90-day completion window per group",
+      "event": "experiment_assigned → stay_completed; intention-to-treat"
+    },
+    {
+      "name": "Booking conversion",
+      "numerator": "Randomised eligible groups confirming ≥1 booking within 30 days",
+      "denominator": "All randomised eligible groups",
+      "period": "Assignment cohort +30 days",
+      "event": "experiment_assigned → reservation_confirmed"
+    },
+    {
+      "name": "90-day / 180-day repeat booking",
+      "numerator": "Index-stay organisers making another non-cancelled domestic booking within 90 / 180 days after index checkout",
+      "denominator": "Index-stay organisers with the full 90 / 180 days of observation",
+      "period": "Mature checkout cohorts only; publish alongside completed-repeat-stay outcome",
+      "event": "index_stay_completed → subsequent_reservation_confirmed; distinct reservations"
+    },
+    {
+      "name": "Host readiness",
+      "numerator": "Pilot properties passing required group suitability checks with verified evidence",
+      "denominator": "All active eligible pilot properties assessed in the month",
+      "period": "Monthly snapshot, evidence refreshed after material listing changes",
+      "event": "readiness_assessment_completed; separate self-attested and verified checks"
+    },
+    {
+      "name": "Experience attachment rate",
+      "numerator": "Eligible completed stay reservations with ≥1 completed optional experience",
+      "denominator": "Eligible completed stay reservations exposed to the experience offer",
+      "period": "Checkout month; experience must occur within trip dates",
+      "event": "experience_offer_exposed → experience_completed; join reservation_id"
+    },
+    {
+      "name": "Incremental contribution margin",
+      "numerator": "Treatment minus scaled control platform revenue, less incremental variable delivery/support/refund costs",
+      "denominator": "Report currency total and per-randomised-group difference; no artificial ratio",
+      "period": "Mature pilot cohort; include refunds and reconciliation",
+      "event": "recognised_fee_revenue, refund_posted, variable_cost_posted; finance ledger source"
+    }
   ],
-  experiments: [
-    {name:'Group Decision Room',hypothesis:'Explicit private budgets and availability reconciliation improve completed-stay conversion over existing planning tools.',unit:'Persistent group/organiser cluster; all linked members receive the same assignment to reduce interference.',control:'Current wishlist, messaging and booking flow.',treatment:'Existing flow plus structured preference reconciliation and explicit shared decision.',eligibility:'Consenting adult organisers in Mumbai/Pune planning an Indian stay, party ≥3, intended checkout within outcome window; exclude employees, bots and prior pilot groups.',primary:'Completed-stay conversion (intention-to-treat).',secondary:'Decision completion, 30-day booking conversion and time to shared decision.',guardrails:'Cancellation +≤1 percentage point; complaint rate +≤0.5 point; no material privacy incident; host satisfaction not worse by >0.3/5. Thresholds illustrative and preregistered before launch.'},
-    {name:'Repeat Travel Engine',hypothesis:'Opt-in reusable group constraints increase subsequent domestic bookings.',unit:'Index-stay organiser cluster; retain assignment across devices and linked travel groups.',control:'Existing post-stay discovery and connections.',treatment:'Opt-in saved constraints and explainable rule-based suggestions.',eligibility:'Completed pilot index stay, consent to save group preferences; exclude cancelled index stays.',primary:'180-day repeat booking among fully observed index-stay organisers.',secondary:'90-day repeat booking and completed repeat stays.',guardrails:'Notification opt-outs, complaints, privacy incidents, recommendation diversity and negative margin.'},
-    {name:'Host Growth Assistant',hypothesis:'Explainable group-readiness actions increase suitability without creating misleading expectations.',unit:'Property, clustered by host where multiple properties share operations.',control:'Existing host tools.',treatment:'Existing tools plus aggregate needs and evidence-based readiness checklist.',eligibility:'Opted-in eligible Mumbai/Pune corridor supply with stable inventory.',primary:'Verified group-readiness pass rate.',secondary:'Group conversion and host task completion.',guardrails:'Host satisfaction, listing misrepresentation, support demand and cost to fulfil.'},
-    {name:'Local Experience Bundles',hypothesis:'Optional, relevant post-booking activities increase incremental contribution without harming the stay.',unit:'Stay reservation group.',control:'Existing experience discovery.',treatment:'Transparent opt-in group bundle with item-level removal.',eligibility:'Confirmed eligible stay with relevant, vetted local inventory; never required for accommodation.',primary:'Incremental contribution per eligible stay.',secondary:'Completed experience attachment.',guardrails:'Refunds, complaints, provider incidents, stay cancellations and abandonment; no preselected paid additions.'}
+  "experiments": [
+    {
+      "name": "Group Decision Room",
+      "hypothesis": "Explicit private budgets and availability reconciliation improve completed-stay conversion over existing planning tools.",
+      "unit": "Persistent group/organiser cluster; all linked members receive the same assignment to reduce interference.",
+      "control": "Current wishlist, messaging and booking flow.",
+      "treatment": "Existing flow plus structured preference reconciliation and explicit shared decision.",
+      "eligibility": "Consenting adult organisers in Mumbai/Pune planning an Indian stay, party ≥3, intended checkout within outcome window; exclude employees, bots and prior pilot groups.",
+      "primary": "Completed-stay conversion (intention-to-treat).",
+      "secondary": "Decision completion, 30-day booking conversion and time to shared decision.",
+      "guardrails": "Cancellation +≤1 percentage point; complaint rate +≤0.5 point; no material privacy incident; host satisfaction not worse by >0.3/5. Thresholds illustrative and preregistered before launch."
+    },
+    {
+      "name": "Repeat Travel Engine",
+      "hypothesis": "Opt-in reusable group constraints increase subsequent domestic bookings.",
+      "unit": "Index-stay organiser cluster; retain assignment across devices and linked travel groups.",
+      "control": "Existing post-stay discovery and connections.",
+      "treatment": "Opt-in saved constraints and explainable rule-based suggestions.",
+      "eligibility": "Completed pilot index stay, consent to save group preferences; exclude cancelled index stays.",
+      "primary": "180-day repeat booking among fully observed index-stay organisers.",
+      "secondary": "90-day repeat booking and completed repeat stays.",
+      "guardrails": "Notification opt-outs, complaints, privacy incidents, recommendation diversity and negative margin."
+    },
+    {
+      "name": "Host Growth Assistant",
+      "hypothesis": "Explainable group-readiness actions increase suitability without creating misleading expectations.",
+      "unit": "Property, clustered by host where multiple properties share operations.",
+      "control": "Existing host tools.",
+      "treatment": "Existing tools plus aggregate needs and evidence-based readiness checklist.",
+      "eligibility": "Opted-in eligible Mumbai/Pune corridor supply with stable inventory.",
+      "primary": "Verified group-readiness pass rate.",
+      "secondary": "Group conversion and host task completion.",
+      "guardrails": "Host satisfaction, listing misrepresentation, support demand and cost to fulfil."
+    },
+    {
+      "name": "Local Experience Bundles",
+      "hypothesis": "Optional, relevant post-booking activities increase incremental contribution without harming the stay.",
+      "unit": "Stay reservation group.",
+      "control": "Existing experience discovery.",
+      "treatment": "Transparent opt-in group bundle with item-level removal.",
+      "eligibility": "Confirmed eligible stay with relevant, vetted local inventory; never required for accommodation.",
+      "primary": "Incremental contribution per eligible stay.",
+      "secondary": "Completed experience attachment.",
+      "guardrails": "Refunds, complaints, provider incidents, stay cancellations and abandonment; no preselected paid additions."
+    }
   ],
-  raci: [
-    {work:'Problem definition and gates',accountable:'Product',responsible:'Product + Design',consulted:'Data, Support, Host operations, Marketing',informed:'Engineering, Finance, Legal/privacy, Trust/safety, Partnerships'},
-    {work:'Research and consent',accountable:'Design',responsible:'Research/Design',consulted:'Legal/privacy, Trust/safety, Product, Support',informed:'All pilot functions'},
-    {work:'Instrumentation and experiment',accountable:'Data analytics',responsible:'Engineering + Data',consulted:'Product, Finance, Legal/privacy',informed:'Marketing, Support, Host operations'},
-    {work:'MVP build and reliability',accountable:'Engineering',responsible:'Engineering + Design',consulted:'Product, Data, Trust/safety, Support',informed:'Finance, Marketing, Partnerships'},
-    {work:'Supply readiness and fulfilment',accountable:'Host operations',responsible:'Host operations + Sales/partnerships',consulted:'Trust/safety, Support, Product, Legal/privacy',informed:'Marketing, Engineering, Finance'},
-    {work:'Lifecycle activation',accountable:'Marketing',responsible:'Marketing + Product',consulted:'Data, Design, Legal/privacy, Support',informed:'Partnerships, Host operations'},
-    {work:'Economics and launch approval',accountable:'Product',responsible:'Finance + Data',consulted:'Engineering, Trust/safety, Legal/privacy, Host operations',informed:'Design, Marketing, Support, Partnerships'}
+  "raci": [
+    {
+      "work": "Problem definition and gates",
+      "accountable": "Product",
+      "responsible": "Product + Design",
+      "consulted": "Data, Support, Host operations, Marketing",
+      "informed": "Engineering, Finance, Legal/privacy, Trust/safety, Partnerships"
+    },
+    {
+      "work": "Research and consent",
+      "accountable": "Design",
+      "responsible": "Research/Design",
+      "consulted": "Legal/privacy, Trust/safety, Product, Support",
+      "informed": "All pilot functions"
+    },
+    {
+      "work": "Instrumentation and experiment",
+      "accountable": "Data analytics",
+      "responsible": "Engineering + Data",
+      "consulted": "Product, Finance, Legal/privacy",
+      "informed": "Marketing, Support, Host operations"
+    },
+    {
+      "work": "MVP build and reliability",
+      "accountable": "Engineering",
+      "responsible": "Engineering + Design",
+      "consulted": "Product, Data, Trust/safety, Support",
+      "informed": "Finance, Marketing, Partnerships"
+    },
+    {
+      "work": "Supply readiness and fulfilment",
+      "accountable": "Host operations",
+      "responsible": "Host operations + Sales/partnerships",
+      "consulted": "Trust/safety, Support, Product, Legal/privacy",
+      "informed": "Marketing, Engineering, Finance"
+    },
+    {
+      "work": "Lifecycle activation",
+      "accountable": "Marketing",
+      "responsible": "Marketing + Product",
+      "consulted": "Data, Design, Legal/privacy, Support",
+      "informed": "Partnerships, Host operations"
+    },
+    {
+      "work": "Economics and launch approval",
+      "accountable": "Product",
+      "responsible": "Finance + Data",
+      "consulted": "Engineering, Trust/safety, Legal/privacy, Host operations",
+      "informed": "Design, Marketing, Support, Partnerships"
+    }
   ],
-  roadmap: [
-    {phase:'Discover',window:'Weeks 1–2',owner:'Product + Research',milestone:'20 genuine responses; review early discovery, not significance',dependency:'Collection backend, consent and recruitment quotas',gate:'Can participants describe the problem unprompted?',risk:'Convenience-sample selection bias'},
-    {phase:'Validate',window:'Weeks 3–4',owner:'Design + Data',milestone:'50 responses; 5–10 usability sessions; ≥10 host interviews',dependency:'Balanced platform segments and host recruitment',gate:'Core tasks understood; no critical usability/privacy issue',risk:'Stated intent differs from actual behaviour'},
-    {phase:'Build',window:'Weeks 5–8',owner:'Engineering + Host operations',milestone:'Reassess priorities at 100 responses; instrument MVP',dependency:'Evidence review, vetted supply, event QA',gate:'Security, accessibility, calculation and assignment QA signed off',risk:'Cross-group assignment contamination'},
-    {phase:'Controlled pilot',window:'Days 1–90 after build gate',owner:'Product + Data',milestone:'Mumbai/Pune corridor; staged exposure with safety checks',dependency:'Sample-size feasibility and preregistered protocol',gate:'Monitor guardrails; no early efficacy claim from repeated peeking',risk:'Insufficient mature completed stays'},
-    {phase:'Measure and iterate',window:'Day 90 onward; outcome maturation required',owner:'Data + Finance',milestone:'Reconcile completion, refunds and contribution',dependency:'Full outcome window for each assignment cohort',gate:'Scale only with positive evidence and acceptable guardrails',risk:'Seasonality or delayed refunds distort economics'},
-    {phase:'Retention and expansion',window:'≥180 days after last index stay',owner:'Product + Partnerships',milestone:'Mature 180-day retention analysis; selective corridor expansion',dependency:'Repeat cohort maturity, host capacity and margin',gate:'Repeat lift and supply health justify expansion',risk:'A 90-day pilot cannot establish a 180-day outcome'}
+  "roadmap": [
+    {
+      "phase": "Review the evidence",
+      "window": "Weeks 1–2",
+      "owner": "Product + Design",
+      "milestone": "Audit public observations and current platform capabilities",
+      "dependency": "Traceable sources, dates and clear interpretation limits",
+      "gate": "Are product questions specific and supported by the evidence?",
+      "risk": "Selection bias and unverified accounts"
+    },
+    {
+      "phase": "Validate concepts",
+      "window": "Weeks 3–4",
+      "owner": "Design + Data",
+      "milestone": "Review task clarity, cost comprehension and conflict recovery",
+      "dependency": "Working prototypes and explicit acceptance criteria",
+      "gate": "No critical usability, privacy or calculation issues",
+      "risk": "Prototype behaviour does not establish marketplace adoption"
+    },
+    {
+      "phase": "Build",
+      "window": "Weeks 5–8",
+      "owner": "Engineering + Host operations",
+      "milestone": "Review evidence confidence and instrument the MVP",
+      "dependency": "Evidence review, vetted supply, event QA",
+      "gate": "Security, accessibility, calculation and assignment QA signed off",
+      "risk": "Cross-group assignment contamination"
+    },
+    {
+      "phase": "Controlled pilot",
+      "window": "Days 1–90 after build gate",
+      "owner": "Product + Data",
+      "milestone": "Mumbai/Pune corridor; staged exposure with safety checks",
+      "dependency": "Sample-size feasibility and preregistered protocol",
+      "gate": "Monitor guardrails; no early efficacy claim from repeated peeking",
+      "risk": "Insufficient mature completed stays"
+    },
+    {
+      "phase": "Measure and iterate",
+      "window": "Day 90 onward; outcome maturation required",
+      "owner": "Data + Finance",
+      "milestone": "Reconcile completion, refunds and contribution",
+      "dependency": "Full outcome window for each assignment cohort",
+      "gate": "Scale only with positive evidence and acceptable guardrails",
+      "risk": "Seasonality or delayed refunds distort economics"
+    },
+    {
+      "phase": "Retention and expansion",
+      "window": "≥180 days after last index stay",
+      "owner": "Product + Partnerships",
+      "milestone": "Mature 180-day retention analysis; selective corridor expansion",
+      "dependency": "Repeat cohort maturity, host capacity and margin",
+      "gate": "Repeat lift and supply health justify expansion",
+      "risk": "A 90-day pilot cannot establish a 180-day outcome"
+    }
   ],
-  risks: [
-    {risk:'Invented certainty',mitigation:'Show evidence type on every chart and recommendation; start real research at zero; require signed research synthesis before reprioritisation.',owner:'Product + Research'},
-    {risk:'Privacy and social pressure',mitigation:'Default individual budgets private; show compatibility ranges; consent before saving/reusing preferences; allow delete/leave without exposing budget.',owner:'Legal/privacy + Engineering'},
-    {risk:'Spam and non-representative responses',mitigation:'Server validation, rate limits, honeypot and idempotency; review quality flags; recruit platform and city quotas; do not treat browser tokens as identity proof.',owner:'Research + Engineering'},
-    {risk:'Unsafe or unsuitable supply',mitigation:'Verify amenity evidence, occupancy limits and accessibility; provider onboarding; incident escalation and pilot suspension.',owner:'Trust/safety + Host operations'},
-    {risk:'Marketplace interference',mitigation:'Persistent organiser/group assignment, host clustering where appropriate, overlap diagnostics and sensitivity analysis.',owner:'Data analytics'},
-    {risk:'Revenue overstatement',mitigation:'Separate booking value, recognised fee revenue, contribution and profit after fixed costs; include refunds, cannibalisation, incentives and cost sensitivity.',owner:'Finance'},
-    {risk:'Feature redundancy',mitigation:'Review 2026 Airbnb releases; position structured constraints as an extension; validate incremental utility over existing tools.',owner:'Product'},
-    {risk:'Regulatory and operational variance',mitigation:'Before production, obtain local legal review of accommodation rules, taxes, consumer disclosures, privacy retention and experience-provider obligations.',owner:'Legal/privacy + Partnerships'}
+  "risks": [
+    {
+      "risk": "Invented certainty",
+      "mitigation": "Show evidence type on every chart and recommendation; start real research at zero; require signed research synthesis before reprioritisation.",
+      "owner": "Product + Research"
+    },
+    {
+      "risk": "Privacy and social pressure",
+      "mitigation": "Default individual budgets private; show compatibility ranges; consent before saving/reusing preferences; allow delete/leave without exposing budget.",
+      "owner": "Legal/privacy + Engineering"
+    },
+    {
+      "risk": "Unsafe or unsuitable supply",
+      "mitigation": "Verify amenity evidence, occupancy limits and accessibility; provider onboarding; incident escalation and pilot suspension.",
+      "owner": "Trust/safety + Host operations"
+    },
+    {
+      "risk": "Marketplace interference",
+      "mitigation": "Persistent organiser/group assignment, host clustering where appropriate, overlap diagnostics and sensitivity analysis.",
+      "owner": "Data analytics"
+    },
+    {
+      "risk": "Revenue overstatement",
+      "mitigation": "Separate booking value, recognised fee revenue, contribution and profit after fixed costs; include refunds, cannibalisation, incentives and cost sensitivity.",
+      "owner": "Finance"
+    },
+    {
+      "risk": "Feature redundancy",
+      "mitigation": "Review 2026 Airbnb releases; position structured constraints as an extension; validate incremental utility over existing tools.",
+      "owner": "Product"
+    },
+    {
+      "risk": "Regulatory and operational variance",
+      "mitigation": "Before production, obtain local legal review of accommodation rules, taxes, consumer disclosures, privacy retention and experience-provider obligations.",
+      "owner": "Legal/privacy + Partnerships"
+    }
   ],
-  sections: [
-    {id:'executive',title:'A better group decision, then a better next trip.',kicker:'Executive summary',body:'<p>Focus the India growth wedge on domestic groups of three or more departing Mumbai and Pune. The proposed outcome is more completed group stays, with sustainable contribution and healthy host operations. Start by testing whether explicit availability, private budgets and property suitability resolve a meaningful problem beyond existing Airbnb collaboration tools.</p><p><strong>Decision:</strong> pilot Group Decision Room first; validate repeat preference reuse next. Treat host readiness as a supply prerequisite and optional experience bundles as a later monetisation experiment. This sequence is provisional: synthetic data demonstrates analysis and cannot establish demand.</p>'},
-    {id:'market',title:'Large travel context. A deliberately narrow first market.',kicker:'India opportunity',body:'<p>The Ministry of Tourism reports 2,948.19 million domestic tourist visits in 2024 (<a href="https://data.tourism.gov.in/mrd/Uploads/tourism_data/India%20Tourism%20Data%20Compendium%202025_1.pdf">2025 compendium</a>). These are visits, not unique customers or paid stays; multiplying this number by a booking value would create a misleading market size.</p><p>Use a bottom-up serviceable-market study instead: eligible adult organisers in the two origin cities × domestic group trips per year × suitable paid entire-home occasions × reachable, available supply. Each factor requires verified local evidence. No India Airbnb market share, booking baseline or addressable revenue is asserted here.</p><p>Airbnb’s <a href="https://news.airbnb.com/en-in/intergenerational-travel-gains-momentum-among-young-indians">November 2026 intergenerational travel research</a> supports investigating family groups, while its urban, affluent-skewed sample limits generalisation. Company search signals establish interest, not completed-stay conversion.</p>'},
-    {id:'discovery',title:'Separate a plausible problem from a proven one.',kicker:'Problem discovery',body:'<div class="three-grid"><article><h3>Observed secondary context</h3><p>Group collaboration, experiences and host insights already receive product investment. Domestic travel is a substantial activity category.</p></article><article><h3>Hypothesis to investigate</h3><p>Organisers may struggle to reconcile dates, individual budgets and reliable amenities across several companions.</p></article><article><h3>Evidence still needed</h3><p>Recent booking stories, abandoned group trips, existing workaround artefacts, usability observations and host fulfilment constraints.</p></article></div><p>Ask about the last actual trip before showing a solution. Recruit Airbnb bookers, hotel/OTA customers, Airbnb explorers and occasional travellers; include failed or abandoned plans. Do not interpret feature-interest ratings as proof of conversion.</p>'},
-    {id:'secondary',title:'Build on what Airbnb already does.',kicker:'Secondary research',body:'<p>Shared wishlists, notes, voting and group messages were announced in <a href="https://news.airbnb.com/airbnb-2024-summer-release">2024</a>. Experiences and services were part of the <a href="https://news.airbnb.com/product-releases/airbnb-2025-summer-release">2025 redesign</a>. The <a href="https://news.airbnb.com/airbnb-2026-fall-update">September 2026 update</a> describes social connections, home comparison and host insights, with rollout/geographic qualifications.</p><p><strong>Proposed extension:</strong> explicit multi-person constraints, explainable conflicts, opt-in reuse of group preferences, and an auditable group-readiness checklist. Comparison, recommendation, host insights and local experiences are existing categories. Their precise India availability and the incremental benefit of these extensions need validation.</p>'},
-    {id:'personas',title:'Four recruitment lenses, not discovered personas.',kicker:'Provisional personas · synthetic interpretation',body:'<div class="two-grid"><article><h3>The recurring organiser</h3><p>Coordinates friends from Mumbai; seeks a confirmed choice without repeatedly chasing preferences. Risk: an organiser’s preference dominates quieter members.</p></article><article><h3>The reliability-first family planner</h3><p>Compares a whole home with hotel rooms; needs evidence on sleeping arrangements, access, meals and cancellation. Risk: badges imply guarantees.</p></article><article><h3>The hesitant explorer</h3><p>Has considered Airbnb but has not booked; needs total-cost clarity and confidence in the selected property. Risk: research overweights aspirational intent.</p></article><article><h3>The independent host</h3><p>Wants actionable group-suitability improvements that are feasible to fulfil. Risk: recommendations increase cost without useful demand.</p></article></div><p>No quotations, portraits or behavioural claims here come from real participants. Replace these lenses after genuine synthesis.</p>'},
-    {id:'jtbd',title:'Help the group commit with shared confidence.',kicker:'Jobs to Be Done · hypotheses',body:'<p><strong>When</strong> friends or family want a domestic break but disagree on dates and spend, <strong>help me</strong> find an option that respects everyone’s constraints, <strong>so we can</strong> commit without one organiser carrying all the work.</p><p>Functional job: reconcile availability, costs, sleeping arrangements and cancellation terms. Emotional job: avoid feeling responsible for a disappointing stay. Social job: make disagreement safe without disclosing private financial details. Host job: know which feasible changes make a listing suitable for the groups it can actually serve.</p>'},
-    {id:'journey',title:'Measure the handoffs where a group can stall.',kicker:'Hypothesised customer journey',body:'<div class="journey"><article><h3>Inspire</h3><p>Share trip intent. Friction: vague dates. Event: group_created.</p></article><article><h3>Coordinate</h3><p>Submit private constraints. Friction: missing replies. Event: participant_preferences_submitted.</p></article><article><h3>Decide</h3><p>Compare fit and total cost. Friction: unresolved trade-offs. Event: group_decision_confirmed.</p></article><article><h3>Book and stay</h3><p>Confirm terms and fulfil. Friction: cancellation or amenity mismatch. Event: stay_completed.</p></article><article><h3>Return</h3><p>Opt in to reuse. Friction: irrelevant nudges. Event: subsequent_reservation_confirmed.</p></article></div><p>This is a model for investigation, not a journey map validated through participant observation.</p>'},
-    {id:'competitors',title:'Compete on decision confidence, not a feature checklist.',kicker:'Competitive review',body:'<p>Public desktop pages show credible alternatives for villas and homestays. The comparison below records visible capabilities; it does not infer that a platform lacks a feature because one page did not expose it. No live booking, price parity or conversion comparison was performed.</p>'},
-    {id:'opportunity-tree',title:'One outcome. Four testable opportunity branches.',kicker:'Opportunity Solution Tree · provisional',body:'<div class="tree-root"><strong>Outcome: monthly completed domestic group stays</strong></div><div class="two-grid"><article><h3>Reach a shared decision</h3><p>Opportunity hypothesis: reconcile dates and private budgets. Solution: Group Decision Room. Test: compare unassisted shared-choice completion with current tools.</p></article><article><h3>Reduce the next-trip restart</h3><p>Opportunity hypothesis: reusable constraints remove repetitive planning. Solution: Repeat Travel Engine. Test: opt-in reuse and mature repeat cohorts.</p></article><article><h3>Improve real supply fit</h3><p>Opportunity hypothesis: hosts need specific, feasible group-readiness guidance. Solution: checklist with evidence. Test: verified suitability and host burden.</p></article><article><h3>Increase optional trip value</h3><p>Opportunity hypothesis: relevant activities simplify planning. Solution: optional bundles. Test: incremental margin with refunds and safety guardrails.</p></article></div><p>Research may invalidate any branch. The synthetic pain-point distribution is an illustrative input, not a reason to skip discovery.</p>'},
-    {id:'strategy',title:'Win a small corridor before expanding the playbook.',kicker:'Product strategy',body:'<p><strong>Where to play:</strong> consenting adult organisers of domestic groups departing Mumbai/Pune, initially with short drive-to or weekend stays and vetted suitable supply. This is a research and pilot scope, not a claim of market size.</p><p><strong>How to win:</strong> make constraints explicit, preserve privacy, explain property fit, and carry consented learning into the next trip. Use marketplace supply quality as an enabling constraint. Defer real split payments, automatic purchasing, external messaging and opaque AI ranking.</p><p><strong>Trade-off:</strong> fewer but better-supported decisions may be preferable to more group creation. Optimise completed stays with contribution, cancellation, satisfaction and trust guardrails; never optimise invitations alone.</p>'},
-    {id:'initiatives',title:'Product-led growth with operational ownership.',kicker:'PLG initiatives · proposed',body:'<p>Group creation exposes a useful planning surface to invited companions. Activation requires a meaningful preference contribution, not an account signup. A completed stay creates an optional saved-group asset. Aggregate unmet needs inform host actions. Relevant activities can add value after accommodation is confirmed, with no preselected purchases.</p><p>Marketing uses consented activation/drop-off cohorts rather than buying all growth. Partnerships recruits supply where aggregate needs are unmet. Support receives structured conflict and cancellation context. Finance sees cohort margin, and Trust & Safety monitors fulfilment and provider incidents. Product-generated signals enable these functions; accountable humans retain decisions.</p>'},
-    {id:'loops',title:'A loop compounds only when value survives each handoff.',kicker:'Growth loops · hypotheses',body:'<p>Select a loop to examine its activation event and failure modes. All rates are definitions to measure in a pilot, not observed results. Report denominators and the time window at every step. A healthy loop can fail through low invitation acceptance, group disagreement, unavailable supply, poor fulfilment, irrelevant recommendations or negative contribution.</p>'},
-    {id:'prioritization',title:'Let confidence change the order.',kicker:'RICE · illustrative inputs',body:'<p>RICE = reach per quarter × impact multiplier × confidence fraction ÷ person-month effort. Initial values are planning assumptions, informed by synthetic scenarios only. Confidence is an explicit judgement about expected impact, not the percentage of people selecting a survey answer.</p><p>At 20, 50 and 100 genuine responses, review sample composition, disconfirming evidence and task observations. Reassess in a documented product review; do not automatically change features after each response. Pair RICE with safety, dependencies and supply feasibility.</p>'},
-    {id:'experiments',title:'A 90-day pilot with outcomes allowed to mature.',kicker:'Experimentation framework',body:'<p>Preregister the protocol, assignment, event schema, analysis and guardrails before exposure. Instrument an A/A test first. Roll out from internal samples to a small eligible cohort, then the powered randomised test. Analyse intention-to-treat; report exposure-based analysis separately. Cluster related participants to reduce spillover.</p><p><strong>Illustrative power assumption:</strong> baseline completed-stay conversion 20%, target 22% (10% relative uplift), two-sided α=0.05 and 80% power. A simple independent two-proportion approximation requires about 6,510 groups per arm; budget about 6,600 before inflation for clustering, missing data and multiplicity. The 20% baseline is unverified. Estimate it from a genuine baseline and recompute with Data before launch. If traffic cannot support the design, reduce scope or run discovery rather than promise statistical proof.</p><p>For 180-day repeat booking, an illustrative 20% to 23% change (+3 percentage points) needs about 2,943 mature organisers per arm under the same independent assumptions. This is a separate eligible index-stay cohort; the initial conversion sample does not automatically power retention. Follow the last index-stay cohort for at least 180 days after checkout. A 90-day pilot cannot establish this outcome.</p><p><strong>Go/no-go:</strong> scale only after the preregistered fixed-horizon analysis supports useful lift, contribution is acceptable, and guardrails hold. Investigate inconclusive results. Roll back immediately for material privacy/safety issues; pause if preregistered cancellation, complaint or host-satisfaction thresholds are breached. Any interim efficacy testing requires a sequential design and adjusted error control.</p>'},
-    {id:'execution',title:'One accountable owner per decision.',kicker:'Cross-functional execution',body:'<p>The RACI below specifies accountability without replacing collaboration. Product owns outcome and launch gates; Engineering owns implementation reliability; Design owns research and usability; Data owns assignment and inference. Host operations and Partnerships own fulfilment. Marketing owns consented lifecycle activation; Support owns issue taxonomy and escalation. Finance validates economics; Trust & Safety and Legal/privacy can block unsafe release.</p>'},
-    {id:'roadmap',title:'Evidence gates before expansion.',kicker:'Roadmap · proposed sequence',body:'<p>Discovery and build precede the 90-day controlled pilot. Twenty, fifty and one hundred responses are learning checkpoints, not guarantees of statistical significance. Usability sessions and host interviews answer different questions and are tracked separately from survey responses. Expansion depends on mature outcomes, operational capacity and contribution.</p>'},
-    {id:'risks',title:'Make the failure conditions visible.',kicker:'Risks and mitigation',body:'<p>These prototypes are local simulations. A production marketplace would require identity, fraud controls, supply operations, accessibility verification, secure data handling, provider agreements, legal review and durable event instrumentation. No real booking, payment or third-party invitation is performed by this case study.</p>'},
-    {id:'references',title:'What the evidence can—and cannot—say.',kicker:'References and transparency',body:'<p>Reviewed 27 November 2026. Primary sources below support specific context and capability observations. Company research is labelled as such; official tourist visits are not customer counts. Dynamic competitor observations are dated and limited. The financial model uses illustrative inputs, not Airbnb India internal financial data. No real interviews, experiment outcomes or testimonials are claimed.</p>'}
+  "sections": [
+    {
+      "id": "executive",
+      "title": "A better group decision, then a better next trip.",
+      "kicker": "Executive summary",
+      "body": "<p>Focus the India growth wedge on domestic groups of three or more departing Mumbai and Pune. The proposed outcome is more completed group stays, with sustainable contribution and healthy host operations. Start by testing whether explicit availability, private budgets and property suitability resolve a meaningful problem beyond existing Airbnb collaboration tools.</p><p><strong>Decision:</strong> pilot Group Decision Room first; validate repeat preference reuse next. Treat host readiness as a supply prerequisite and optional experience bundles as a later monetisation experiment. This sequence is provisional: synthetic data demonstrates analysis and cannot establish demand.</p>"
+    },
+    {
+      "id": "market",
+      "title": "Large travel context. A deliberately narrow first market.",
+      "kicker": "India opportunity",
+      "body": "<p>The Ministry of Tourism reports 2,948.19 million domestic tourist visits in 2024 (<a href=\"https://data.tourism.gov.in/mrd/Uploads/tourism_data/India%20Tourism%20Data%20Compendium%202025_1.pdf\">2025 compendium</a>). These are visits, not unique customers or paid stays; multiplying this number by a booking value would create a misleading market size.</p><p>Use a bottom-up serviceable-market study instead: eligible adult organisers in the two origin cities × domestic group trips per year × suitable paid entire-home occasions × reachable, available supply. Each factor requires verified local evidence. No India Airbnb market share, booking baseline or addressable revenue is asserted here.</p><p>Airbnb’s <a href=\"https://news.airbnb.com/en-in/intergenerational-travel-gains-momentum-among-young-indians\">November 2026 intergenerational travel research</a> supports investigating family groups, while its urban, affluent-skewed sample limits generalisation. Company search signals establish interest, not completed-stay conversion.</p>"
+    },
+    {
+      "id": "discovery",
+      "title": "Separate a plausible problem from a proven one.",
+      "kicker": "Problem discovery",
+      "body": "<p>Review public accounts of real planning situations, compare current platform capabilities and make product interpretations explicit. Public statements are self-reported, not independently verified. The complete source ledger is included in the consolidated research PDF.</p>"
+    },
+    {
+      "id": "secondary",
+      "title": "Build on what Airbnb already does.",
+      "kicker": "Secondary research",
+      "body": "<p>Shared wishlists, notes, voting and group messages were announced in <a href=\"https://news.airbnb.com/airbnb-2024-summer-release\">2024</a>. Experiences and services were part of the <a href=\"https://news.airbnb.com/product-releases/airbnb-2025-summer-release\">2025 redesign</a>. The <a href=\"https://news.airbnb.com/airbnb-2026-fall-update\">September 2026 update</a> describes social connections, home comparison and host insights, with rollout/geographic qualifications.</p><p><strong>Proposed extension:</strong> explicit multi-person constraints, explainable conflicts, opt-in reuse of group preferences, and an auditable group-readiness checklist. Comparison, recommendation, host insights and local experiences are existing categories. Their precise India availability and the incremental benefit of these extensions need validation.</p>"
+    },
+    {
+      "id": "personas",
+      "title": "Four recruitment lenses, not discovered personas.",
+      "kicker": "Provisional personas · synthetic interpretation",
+      "body": "<div class=\"two-grid\"><article><h3>The recurring organiser</h3><p>Coordinates friends from Mumbai; seeks a confirmed choice without repeatedly chasing preferences. Risk: an organiser’s preference dominates quieter members.</p></article><article><h3>The reliability-first family planner</h3><p>Compares a whole home with hotel rooms; needs evidence on sleeping arrangements, access, meals and cancellation. Risk: badges imply guarantees.</p></article><article><h3>The hesitant explorer</h3><p>Has considered Airbnb but has not booked; needs total-cost clarity and confidence in the selected property. Risk: research overweights aspirational intent.</p></article><article><h3>The independent host</h3><p>Wants actionable group-suitability improvements that are feasible to fulfil. Risk: recommendations increase cost without useful demand.</p></article></div><p>No quotations, portraits or behavioural claims here come from real participants. Replace these lenses after genuine synthesis.</p>"
+    },
+    {
+      "id": "jtbd",
+      "title": "Help the group commit with shared confidence.",
+      "kicker": "Jobs to Be Done · hypotheses",
+      "body": "<p><strong>When</strong> friends or family want a domestic break but disagree on dates and spend, <strong>help me</strong> find an option that respects everyone’s constraints, <strong>so we can</strong> commit without one organiser carrying all the work.</p><p>Functional job: reconcile availability, costs, sleeping arrangements and cancellation terms. Emotional job: avoid feeling responsible for a disappointing stay. Social job: make disagreement safe without disclosing private financial details. Host job: know which feasible changes make a listing suitable for the groups it can actually serve.</p>"
+    },
+    {
+      "id": "journey",
+      "title": "Measure the handoffs where a group can stall.",
+      "kicker": "Hypothesised customer journey",
+      "body": "<div class=\"journey\"><article><h3>Inspire</h3><p>Share trip intent. Friction: vague dates. Event: group_created.</p></article><article><h3>Coordinate</h3><p>Submit private constraints. Friction: missing replies. Event: participant_preferences_submitted.</p></article><article><h3>Decide</h3><p>Compare fit and total cost. Friction: unresolved trade-offs. Event: group_decision_confirmed.</p></article><article><h3>Book and stay</h3><p>Confirm terms and fulfil. Friction: cancellation or amenity mismatch. Event: stay_completed.</p></article><article><h3>Return</h3><p>Opt in to reuse. Friction: irrelevant nudges. Event: subsequent_reservation_confirmed.</p></article></div><p>This is a model for investigation, not a journey map validated through participant observation.</p>"
+    },
+    {
+      "id": "competitors",
+      "title": "Compete on decision confidence, not a feature checklist.",
+      "kicker": "Competitive review",
+      "body": "<p>Public desktop pages show credible alternatives for villas and homestays. The comparison below records visible capabilities; it does not infer that a platform lacks a feature because one page did not expose it. No live booking, price parity or conversion comparison was performed.</p>"
+    },
+    {
+      "id": "opportunity-tree",
+      "title": "One outcome. Four testable opportunity branches.",
+      "kicker": "Opportunity Solution Tree · provisional",
+      "body": "<div class=\"tree-root\"><strong>Outcome: monthly completed domestic group stays</strong></div><div class=\"two-grid\"><article><h3>Reach a shared decision</h3><p>Opportunity hypothesis: reconcile dates and private budgets. Solution: Group Decision Room. Test: compare unassisted shared-choice completion with current tools.</p></article><article><h3>Reduce the next-trip restart</h3><p>Opportunity hypothesis: reusable constraints remove repetitive planning. Solution: Repeat Travel Engine. Test: opt-in reuse and mature repeat cohorts.</p></article><article><h3>Improve real supply fit</h3><p>Opportunity hypothesis: hosts need specific, feasible group-readiness guidance. Solution: checklist with evidence. Test: verified suitability and host burden.</p></article><article><h3>Increase optional trip value</h3><p>Opportunity hypothesis: relevant activities simplify planning. Solution: optional bundles. Test: incremental margin with refunds and safety guardrails.</p></article></div><p>Research may invalidate any branch. The synthetic pain-point distribution is an illustrative input, not a reason to skip discovery.</p>"
+    },
+    {
+      "id": "strategy",
+      "title": "Win a small corridor before expanding the playbook.",
+      "kicker": "Product strategy",
+      "body": "<p><strong>Where to play:</strong> consenting adult organisers of domestic groups departing Mumbai/Pune, initially with short drive-to or weekend stays and vetted suitable supply. This is a research and pilot scope, not a claim of market size.</p><p><strong>How to win:</strong> make constraints explicit, preserve privacy, explain property fit, and carry consented learning into the next trip. Use marketplace supply quality as an enabling constraint. Defer real split payments, automatic purchasing, external messaging and opaque AI ranking.</p><p><strong>Trade-off:</strong> fewer but better-supported decisions may be preferable to more group creation. Optimise completed stays with contribution, cancellation, satisfaction and trust guardrails; never optimise invitations alone.</p>"
+    },
+    {
+      "id": "initiatives",
+      "title": "Product-led growth with operational ownership.",
+      "kicker": "PLG initiatives · proposed",
+      "body": "<p>Group creation exposes a useful planning surface to invited companions. Activation requires a meaningful preference contribution, not an account signup. A completed stay creates an optional saved-group asset. Aggregate unmet needs inform host actions. Relevant activities can add value after accommodation is confirmed, with no preselected purchases.</p><p>Marketing uses consented activation/drop-off cohorts rather than buying all growth. Partnerships recruits supply where aggregate needs are unmet. Support receives structured conflict and cancellation context. Finance sees cohort margin, and Trust & Safety monitors fulfilment and provider incidents. Product-generated signals enable these functions; accountable humans retain decisions.</p>"
+    },
+    {
+      "id": "loops",
+      "title": "A loop compounds only when value survives each handoff.",
+      "kicker": "Growth loops · hypotheses",
+      "body": "<p>Select a loop to examine its activation event and failure modes. All rates are definitions to measure in a pilot, not observed results. Report denominators and the time window at every step. A healthy loop can fail through low invitation acceptance, group disagreement, unavailable supply, poor fulfilment, irrelevant recommendations or negative contribution.</p>"
+    },
+    {
+      "id": "prioritization",
+      "title": "Let confidence change the order.",
+      "kicker": "RICE · illustrative inputs",
+      "body": "<p>RICE combines quarterly reach, assumed impact, confidence and person-month effort. Initial values are planning assumptions. Update confidence through source review, task evidence and operational feasibility, then record the reason for each priority decision.</p>"
+    },
+    {
+      "id": "experiments",
+      "title": "A 90-day pilot with outcomes allowed to mature.",
+      "kicker": "Experimentation framework",
+      "body": "<p>Preregister the protocol, assignment, event schema, analysis and guardrails before exposure. Instrument an A/A test first. Roll out from internal samples to a small eligible cohort, then the powered randomised test. Analyse intention-to-treat; report exposure-based analysis separately. Cluster related participants to reduce spillover.</p><p><strong>Illustrative power assumption:</strong> baseline completed-stay conversion 20%, target 22% (10% relative uplift), two-sided α=0.05 and 80% power. A simple independent two-proportion approximation requires about 6,510 groups per arm; budget about 6,600 before inflation for clustering, missing data and multiplicity. The 20% baseline is unverified. Estimate it from a genuine baseline and recompute with Data before launch. If traffic cannot support the design, reduce scope or run discovery rather than promise statistical proof.</p><p>For 180-day repeat booking, an illustrative 20% to 23% change (+3 percentage points) needs about 2,943 mature organisers per arm under the same independent assumptions. This is a separate eligible index-stay cohort; the initial conversion sample does not automatically power retention. Follow the last index-stay cohort for at least 180 days after checkout. A 90-day pilot cannot establish this outcome.</p><p><strong>Go/no-go:</strong> scale only after the preregistered fixed-horizon analysis supports useful lift, contribution is acceptable, and guardrails hold. Investigate inconclusive results. Roll back immediately for material privacy/safety issues; pause if preregistered cancellation, complaint or host-satisfaction thresholds are breached. Any interim efficacy testing requires a sequential design and adjusted error control.</p>"
+    },
+    {
+      "id": "execution",
+      "title": "One accountable owner per decision.",
+      "kicker": "Cross-functional execution",
+      "body": "<p>The RACI below specifies accountability without replacing collaboration. Product owns outcome and launch gates; Engineering owns implementation reliability; Design owns research and usability; Data owns assignment and inference. Host operations and Partnerships own fulfilment. Marketing owns consented lifecycle activation; Support owns issue taxonomy and escalation. Finance validates economics; Trust & Safety and Legal/privacy can block unsafe release.</p>"
+    },
+    {
+      "id": "roadmap",
+      "title": "Evidence gates before expansion.",
+      "kicker": "Roadmap · proposed sequence",
+      "body": "<p>Evidence review and prototype validation precede a controlled pilot. Expansion depends on mature outcomes, operational capacity, trustworthy supply and contribution. Dates describe a proposed sequence, not completed work.</p>"
+    },
+    {
+      "id": "risks",
+      "title": "Make the failure conditions visible.",
+      "kicker": "Risks and mitigation",
+      "body": "<p>These prototypes are local simulations. A production marketplace would require identity, fraud controls, supply operations, accessibility verification, secure data handling, provider agreements, legal review and durable event instrumentation. No real booking, payment or third-party invitation is performed by this case study.</p>"
+    },
+    {
+      "id": "references",
+      "title": "What the evidence can—and cannot—say.",
+      "kicker": "References and transparency",
+      "body": "<p>Published sources support specific context and capability observations. Public accounts are self-reported and source-linked. Official tourism visits are not unique customers. Financial assumptions do not represent internal Airbnb India data, and no measured business uplift is claimed.</p>"
+    }
   ]
 };
