@@ -1,6 +1,6 @@
 # Assignment artifact build
 
-The downloadable report is `../downloads/airbnb-india-case-study.pdf` (23 pages). The executive summary is `../downloads/airbnb-india-executive.pdf` (exactly five slides), with an accessible editable HTML source at `../downloads/airbnb-india-executive.html`. Narration and the recording storyboard are separate Markdown downloads.
+The downloadable report is `../downloads/airbnb-india-case-study.pdf` (24 pages). The executive summary is `../downloads/airbnb-india-executive.pdf` (exactly five slides), with an accessible editable HTML source at `../downloads/airbnb-india-executive.html`. Narration and the recording storyboard are separate Markdown downloads.
 
 ## Reproduce
 
@@ -20,7 +20,7 @@ The renderer uses PDF.js with a native canvas to render every page to PNG. It al
 
 - Built the report and executive PDFs from the checked-in generator.
 - Reopened both PDFs with PDF.js and rendered every page.
-- Confirmed 23 report pages and exactly five executive slides.
+- Confirmed 24 report pages and exactly five executive slides.
 - Inspected both full-document montages; corrected a table flow position issue and an executive footer pagination issue, then regenerated and re-rendered.
 - Extracted all page text for verification. The PDFs contain the full research disclosure.
 - Checked report assumptions against the website: 40,000 bookings, 10% uplift, INR 12,000 value, 15.5% modeled fee, INR 16 lakh experience revenue, INR 350 variable cost per incremental booking and INR 25 lakh fixed costs.

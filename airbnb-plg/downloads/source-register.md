@@ -1,8 +1,12 @@
 # Source and reference register
 
+## Supplementary public qualitative accounts
+
+The separate public-research-review.pdf provides records P01–P20 across 17 public discussions/posts, reviewed 28 November 2026. This supplementary ledger contains direct links, parent discussions when needed, precise source locations, publication-date uncertainty and interpretation limits. Public self-reports are not recruited participants or survey responses. Four commute records are adjacent context only. Existing institutional and company sources below retain their original IDs.
+
 Independent Airbnb India PM/PLG case study by Kunal Mahurkar. Reviewed 27 November 2026.
 
-This independent product management case study currently uses publicly available secondary research and a clearly labelled synthetic customer dataset to demonstrate research analysis, hypothesis formation, feature prioritization and MVP design. Primary customer research is ongoing. Synthetic responses are not actual participant responses and are excluded from verified research findings. Product recommendations will be reassessed as genuine customer and host feedback becomes available.
+This independent product management case study currently uses publicly available secondary research and a clearly labelled synthetic customer dataset to demonstrate research analysis, hypothesis formation, feature prioritization and MVP design. Primary customer research has not been conducted for this version. Synthetic responses are not actual participant responses and are excluded from verified research findings. Product recommendations will be reassessed as genuine customer and host feedback becomes available.
 
 ## Evidence rules
 

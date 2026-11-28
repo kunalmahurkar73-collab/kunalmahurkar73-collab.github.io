@@ -1,5 +1,13 @@
 # QA record
 
+## Public-source review update, 28 November 2026
+
+- Added a separate secondary-research view containing 20 observations across 17 source discussions/posts; no invented survey answers or demographics.
+- Verified all source records have citations, source locations, date/date-uncertainty fields, summaries and explicit limitations.
+- Browser checks passed for context/theme filters and synthetic/public/real separation: synthetic traveller count remains 100; public review count is 20; project survey and interview counts remain zero.
+- PDF-only download checks passed, with no visible Markdown links. Edge axe scans found zero automated violations on the two tested pages.
+- Public-review PDF and refreshed report/deck were rendered for visual review. Public claims and identities were not independently verified; no representative or causal conclusion is claimed.
+
 ## Update: 28 November 2026
 
 - Featured Airbnb above the homepage Work grid and moved its project card first; refreshed asset versions.

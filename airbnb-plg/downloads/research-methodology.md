@@ -1,8 +1,12 @@
 # Research methodology
 
+## Public qualitative review, 28 November 2026
+
+The Public accounts view contains 20 observations across 17 public discussions/posts, including four adjacent commute accounts. These are source-linked self-reports and planning questions, not project survey responses or interviews. The review used purposive search, included positive and negative accounts, excluded known cross-posts, and consolidated replies from the same original author. No identity, experience, prevalence or causal effect was independently verified. Context and theme filters select records only; they do not estimate population distributions. The separate public-source review PDF supplies the full ledger, dates or date uncertainty, source locations and limitations. Actual survey responses and completed interviews remain zero.
+
 Airbnb India: independent PM and PLG case study by Kunal Mahurkar. Protocol prepared 27 November 2026. No completed primary sessions or genuine responses are claimed.
 
-This independent product management case study currently uses publicly available secondary research and a clearly labelled synthetic customer dataset to demonstrate research analysis, hypothesis formation, feature prioritization and MVP design. Primary customer research is ongoing. Synthetic responses are not actual participant responses and are excluded from verified research findings. Product recommendations will be reassessed as genuine customer and host feedback becomes available.
+This independent product management case study currently uses publicly available secondary research and a clearly labelled synthetic customer dataset to demonstrate research analysis, hypothesis formation, feature prioritization and MVP design. Primary customer research has not been conducted for this version. Synthetic responses are not actual participant responses and are excluded from verified research findings. Product recommendations will be reassessed as genuine customer and host feedback becomes available.
 
 ## Decision and questions
 
