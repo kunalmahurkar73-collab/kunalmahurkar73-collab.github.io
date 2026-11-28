@@ -2,3 +2,5 @@
 .amazon{background:#f2a842;color:#241b0d}.amazon .map{border-color:#241b0d77}@media(min-width:801px){.work .cards{grid-template-columns:repeat(4,minmax(0,1fr))}.work .card{min-width:0}.work .card h3{font-size:clamp(26px,2.5vw,38px)}}
 
 .airbnb{background:#ffe3e8;color:#3b1720}.airbnb .map{border-color:#a32d4666}@media(min-width:801px){.work .cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+.featured-airbnb{display:flex;gap:30px;justify-content:space-between;align-items:center;padding:28px;background:#ffe3e8;border:2px solid #3b1720;border-radius:16px;margin-bottom:28px;color:#3b1720}.featured-airbnb small{font-size:12px;font-weight:800;letter-spacing:.08em}.featured-airbnb h3{font-size:28px;line-height:1.2;margin:10px 0}.featured-airbnb p{font-size:15px;margin:0}.featured-links{display:grid;gap:10px;min-width:250px}.featured-links a{font-size:14px;font-weight:700;text-underline-offset:4px}@media(max-width:800px){.featured-airbnb{display:block;padding:22px}.featured-links{margin-top:20px;min-width:0}}

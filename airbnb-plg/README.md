@@ -1,5 +1,7 @@
 # Airbnb India product-led growth case study
 
+Public download links now expose PDF/PowerPoint formats only. Research Markdown, synthetic CSV source files and generated PNGs remain in the repository for reproducibility. The site includes a sixteen-screen mobile comparison gallery and an interactive Desktop/Mobile switch. Current-capability phone views are conceptual illustrations; proposed views are captures of the implemented MVPs. To rebuild document PDFs and the public manifest, run `node airbnb-plg/tools/build-download-pdfs.cjs` then `node airbnb-plg/tools/use-pdf-downloads.cjs` after capturing mobile screens.
+
 Independent educational assignment by Kunal Mahurkar. Buildless HTML/CSS/JavaScript, compatible with GitHub Pages at `/airbnb-plg/`. Existing portfolio, chatbot, Amazon work, resume and CNAME remain in place. Only the homepage work count/card and a small card style are changed outside this directory.
 
 ## Run locally
