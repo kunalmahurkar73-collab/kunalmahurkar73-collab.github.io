@@ -1,5 +1,7 @@
 # Airbnb India product-led growth case study
 
+The research dashboard now has a separate Public accounts view: 20 source-linked observations across 17 public discussions/posts, with context/theme filters and a downloadable audit PDF. These records are neither synthetic survey answers nor genuine project submissions. Primary research has not been conducted for this version. Rebuild the audit PDF with `node airbnb-plg/tools/build-public-review.cjs`; verify separation with `node airbnb-plg/tools/qa/public-research-tests.cjs`.
+
 Public download links now expose PDF/PowerPoint formats only. Research Markdown, synthetic CSV source files and generated PNGs remain in the repository for reproducibility. The site includes a sixteen-screen mobile comparison gallery and an interactive Desktop/Mobile switch. Current-capability phone views are conceptual illustrations; proposed views are captures of the implemented MVPs. To rebuild document PDFs and the public manifest, run `node airbnb-plg/tools/build-download-pdfs.cjs` then `node airbnb-plg/tools/use-pdf-downloads.cjs` after capturing mobile screens.
 
 Independent educational assignment by Kunal Mahurkar. Buildless HTML/CSS/JavaScript, compatible with GitHub Pages at `/airbnb-plg/`. Existing portfolio, chatbot, Amazon work, resume and CNAME remain in place. Only the homepage work count/card and a small card style are changed outside this directory.
@@ -36,7 +38,7 @@ node airbnb-plg/tools/finalize.cjs
 
 Browser scripts use installed Chrome and Edge at their standard Windows paths. Adapt executable paths on other systems. The static server is local development tooling; never deploy it as the survey backend. Artifact reproduction and format limitations are in [tools/ARTIFACTS.md](tools/ARTIFACTS.md). Production runs without npm packages. QA dependencies are development-only, lockfile pinned and ignored at `node_modules`.
 
-Actual results and limitations: [QA report](downloads/qa-report.md). Screenshots are captured from the actual prototype and copied into the downloadable screen gallery. Documents currently include a 23-page case study PDF, a five-slide executive PDF/HTML deck, narration, storyboard, research protocol, sources, CSVs, survey and experiment plans. A real PPTX is not generated because Spaces/Artifact Tool is unavailable; there is no broken or disguised PowerPoint download. No video link exists.
+Actual results and limitations: [QA report](downloads/qa-report.md). Screenshots are captured from the actual prototype and copied into the downloadable screen gallery. Documents currently include a 24-page case study PDF, a five-slide executive PDF/HTML deck, narration, storyboard, research protocol, sources, CSVs, survey and experiment plans. A real PPTX is not generated because Spaces/Artifact Tool is unavailable; there is no broken or disguised PowerPoint download. No video link exists.
 
 ## Deploy through GitHub Pages
 

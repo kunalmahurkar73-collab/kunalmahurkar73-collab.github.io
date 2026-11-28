@@ -2,7 +2,7 @@
 
 Prepared 27 November 2026. Independent proposed pilot; not executed. All numerical baselines, targets, costs and sample-size inputs below are illustrative assumptions.
 
-This independent product management case study currently uses publicly available secondary research and a clearly labelled synthetic customer dataset to demonstrate research analysis, hypothesis formation, feature prioritization and MVP design. Primary customer research is ongoing. Synthetic responses are not actual participant responses and are excluded from verified research findings. Product recommendations will be reassessed as genuine customer and host feedback becomes available.
+This independent product management case study currently uses publicly available secondary research and a clearly labelled synthetic customer dataset to demonstrate research analysis, hypothesis formation, feature prioritization and MVP design. Primary customer research has not been conducted for this version. Synthetic responses are not actual participant responses and are excluded from verified research findings. Product recommendations will be reassessed as genuine customer and host feedback becomes available.
 
 ## Before pilot exposure
 
