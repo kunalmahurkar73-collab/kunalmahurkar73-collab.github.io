@@ -10,7 +10,7 @@
     "Responsive overflow checks and screenshots at 390, 768, 1440px",
     "Survey required consent, traveller/host branching and unconfigured submission disabled",
     "Homepage five project links and existing chatbot open",
-    "All 15 manifest download targets HTTP 200",
+    "All 12 manifest download targets HTTP 200",
     "No uncaught page errors or broken same-origin resources during tested workflows"
   ],
   "errors": [],

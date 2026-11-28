@@ -1,5 +1,14 @@
 # QA record
 
+## Update: 28 November 2026
+
+- Featured Airbnb above the homepage Work grid and moved its project card first; refreshed asset versions.
+- Added sixteen actual 390px mobile prototype captures and four stage-by-stage current-capability/proposed comparisons. Current views are labelled illustrations, not captured Airbnb screens.
+- Verified all comparison selectors, the interactive Desktop/Mobile preview switch, and page-width containment at 390, 768 and 1440px.
+- Made scrollable phone previews keyboard focusable; repeated Edge axe checks found zero automated violations on the case-study and initial survey screens.
+- Changed the public download library to PDF/PowerPoint files only. Research documents are rendered PDFs. Source Markdown, CSV and image files remain repository materials and are not exposed as download buttons.
+- Survey collection remains unconfigured and submission remains disabled. No genuine submissions are claimed.
+
 Executed 27 November 2026. Results apply to the feature branch and local static preview, not a production Airbnb service.
 
 | Check actually executed | Result |

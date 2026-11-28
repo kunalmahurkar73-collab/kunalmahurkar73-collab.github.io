@@ -7,7 +7,7 @@ const pdfjs=await import('./artifact-build/node_modules/pdfjs-dist/legacy/build/
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const output=path.join(root,'tools/artifact-build/previews');fs.mkdirSync(output,{recursive:true});
 const result=[];
-for(const name of ['airbnb-india-case-study','airbnb-india-executive']){
+for(const name of (process.argv.slice(2).length?process.argv.slice(2):['airbnb-india-case-study','airbnb-india-executive'])){
  const doc=await pdfjs.getDocument({data:new Uint8Array(fs.readFileSync(path.join(root,'downloads',name+'.pdf'))),useSystemFonts:true}).promise;
  const thumbs=[];
  for(let n=1;n<=doc.numPages;n++){
